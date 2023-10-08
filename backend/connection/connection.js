@@ -5,7 +5,7 @@ dotenv.config();
 
 let cnx = undefined
 
-const uri = process.env.MONGO_URI;
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri)
 
 try {
@@ -15,6 +15,6 @@ try {
     console.log(error)
 }
 
-const db = cnx.db("");
+const db = cnx.db("KarioMediaPM");
 
 export default db;

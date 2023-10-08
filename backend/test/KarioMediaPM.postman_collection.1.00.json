@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "4154f4fb-f643-4ef2-b8a1-b90a5fbc2557",
+		"name": "KarioMediaPM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28220852"
+	},
+	"item": [
+		{
+			"name": "localhost:8020/indicadores/all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8020/indicadores/one/6522ad6bf766de5b88c7f34a",
+					"host": [
+						"localhost"
+					],
+					"port": "8020",
+					"path": [
+						"indicadores",
+						"one",
+						"6522ad6bf766de5b88c7f34a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8020/indicadores/one/6522ad6bf766de5b88c7f34a",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8020/indicadores/one/6522ad6bf766de5b88c7f34a",
+					"host": [
+						"localhost"
+					],
+					"port": "8020",
+					"path": [
+						"indicadores",
+						"one",
+						"6522ad6bf766de5b88c7f34a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8020/indicadores/post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    {\r\n        \"indicador\": \"División de tareas\",\r\n        \"descripcion\": \"SCRUM metodo para optimización de tiempo\",\r\n        \"categoria\": \"Baja\",\r\n        \"fecha_de_inicio\": \"18/08/21\",\r\n        \"fecha_de_terminacion\": \"28/12/21\",\r\n        \"formula\": \"Met. Ágil\" ,\r\n        \"frecuencia\": \"1/2\",\r\n        \"cumplimiento\": 95,\r\n        \"area\": \"Gerencia\"\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8020/indicadores/post",
+					"host": [
+						"localhost"
+					],
+					"port": "8020",
+					"path": [
+						"indicadores",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8020/indicadores/delete/6522b1d28e2b061f98c09270",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8020/indicadores/delete/6522b1d28e2b061f98c09270",
+					"host": [
+						"localhost"
+					],
+					"port": "8020",
+					"path": [
+						"indicadores",
+						"delete",
+						"6522b1d28e2b061f98c09270"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8020/indicadores/put/6522b2148e2b061f98c09271",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    {\r\n        \"indicador\": \"División de tareas\",\r\n        \"descripcion\": \"Metología ágil para optimización de tareas\",\r\n        \"categoria\": \"Alta\",\r\n        \"fecha_de_inicio\": \"12/08/21\",\r\n        \"fecha_de_terminacion\": \"28/12/21\",\r\n        \"formula\": \"Met. Ágil\" ,\r\n        \"frecuencia\": \"1/4\",\r\n        \"cumplimiento\": 95,\r\n        \"area\": \"Gerencia\"\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8020/indicadores/put/6522b2148e2b061f98c09271",
+					"host": [
+						"localhost"
+					],
+					"port": "8020",
+					"path": [
+						"indicadores",
+						"put",
+						"6522b2148e2b061f98c09271"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

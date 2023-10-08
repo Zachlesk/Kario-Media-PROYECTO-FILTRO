@@ -1,0 +1,112 @@
+[
+    {
+        "indicador": "Modelado 3D",
+        "descripcion": "Interés por el diseño y modelado 3D",
+        "categoria": "Baja",
+        "fecha_de_inicio": "12/05/21",
+        "fecha_de_terminacion": "12/12/21",
+        "formula": "Met. Ágil" ,
+        "frecuencia": "1/4",
+        "cumplimiento": 31,
+        "area": "Marketing"
+    },
+    {
+        "indicador": "Finca Galeón",
+        "descripcion": "Diseño de maquetación",
+        "categoria": "Baja",
+        "fecha_de_inicio": "12/04/21",
+        "fecha_de_terminacion": "12/05/21",
+        "formula": "Met. Ágil" ,
+        "frecuencia": "1/4",
+        "cumplimiento": 25,
+        "area": "Diseño"
+    },
+    {
+        "indicador": "Colegios Privados",
+        "descripcion": "Se busca llegar a los colegios privado",
+        "categoria": "Media",
+        "fecha_de_inicio": "24/04/21",
+        "fecha_de_terminacion": "12/11/21",
+        "formula": "Met. Fibo" ,
+        "frecuencia": "1/4",
+        "cumplimiento": 80,
+        "area": "Developers"
+    },
+    {
+        "indicador": "Electrodomésticos",
+        "descripcion": "Venta de electrónicos",
+        "categoria": "Media",
+        "fecha_de_inicio": "12/04/21",
+        "fecha_de_terminacion": "12/09/21",
+        "formula": "N/A" ,
+        "frecuencia": "1/3",
+        "cumplimiento": 32,
+        "area": "Gerencia"
+    },
+    {
+        "indicador": "Estrato 2 - Floridablanca",
+        "descripcion": "Impacto en los sectores de estrato 2 en Floridablanca",
+        "categoria": "Alta",
+        "fecha_de_inicio": "12/04/21",
+        "fecha_de_terminacion": "12/09/21",
+        "formula": "Met.Expo" ,
+        "frecuencia": "1/4",
+        "cumplimiento": 95,
+        "area": "Marketing"
+    },
+    {
+        "indicador": "Jóvenes en Acción",
+        "descripcion": "Impacto en los sectores de estrato 1 y 2",
+        "categoria": "Alta",
+        "fecha_de_inicio": "15/02/21",
+        "fecha_de_terminacion": "09/11/21",
+        "formula": "Met.Expo" ,
+        "frecuencia": "1/2",
+        "cumplimiento": 75,
+        "area": "Producción"
+    },
+    {
+        "indicador": "Reuniones mediaticas",
+        "descripcion": "Organización de reuniones de media electrónica",
+        "categoria": "Media",
+        "fecha_de_inicio": "18/02/21",
+        "fecha_de_terminacion": "24/06/21",
+        "formula": "Met.Expo" ,
+        "frecuencia": "1/8",
+        "cumplimiento": 70,
+        "area": "Marketing"
+    },
+    {
+        "indicador": "Maquetación Blender",
+        "descripcion": "Utilización de Blender para maquetar",
+        "categoria": "Baja",
+        "fecha_de_inicio": "12/06/21",
+        "fecha_de_terminacion": "24/08/21",
+        "formula": "Met. Ágil" ,
+        "frecuencia": "1/4",
+        "cumplimiento": 40,
+        "area": "Diseño"
+    },
+    {
+        "indicador": "HUB's tecnológicos",
+        "descripcion": "Concentración en HUB's de tecnología",
+        "categoria": "Media",
+        "fecha_de_inicio": "12/11/21",
+        "fecha_de_terminacion": "26/12/21",
+        "formula": "Met.Fibo" ,
+        "frecuencia": "1/4",
+        "cumplimiento": 90,
+        "area": "Developers"
+    },
+    {
+        "indicador": "Clases de electrónica",
+        "descripcion": "Educación sobre electrónica y media",
+        "categoria": "Alta",
+        "fecha_de_inicio": "24/04/21",
+        "fecha_de_terminacion": "12/08/21",
+        "formula": "Met. Expo" ,
+        "frecuencia": "1/2",
+        "cumplimiento": 65,
+        "area": "Gerencia"
+    }
+]
