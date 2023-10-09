@@ -2,6 +2,9 @@
     {
         "indicador": "Modelado 3D",
         "descripcion": "Interés por el diseño y modelado 3D",
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f36f"
+        },
         "categoria": "Baja",
         "fecha_de_inicio": "12/05/21",
         "fecha_de_terminacion": "12/12/21",
@@ -13,6 +16,9 @@
     {
         "indicador": "Finca Galeón",
         "descripcion": "Diseño de maquetación",
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f370"
+        },
         "categoria": "Baja",
         "fecha_de_inicio": "12/04/21",
         "fecha_de_terminacion": "12/05/21",
@@ -24,6 +30,9 @@
     {
         "indicador": "Colegios Privados",
         "descripcion": "Se busca llegar a los colegios privado",
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f371"
+        },
         "categoria": "Media",
         "fecha_de_inicio": "24/04/21",
         "fecha_de_terminacion": "12/11/21",
@@ -35,6 +44,9 @@
     {
         "indicador": "Electrodomésticos",
         "descripcion": "Venta de electrónicos",
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f372"
+        },
         "categoria": "Media",
         "fecha_de_inicio": "12/04/21",
         "fecha_de_terminacion": "12/09/21",
@@ -46,6 +58,9 @@
     {
         "indicador": "Estrato 2 - Floridablanca",
         "descripcion": "Impacto en los sectores de estrato 2 en Floridablanca",
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f373"
+        },
         "categoria": "Alta",
         "fecha_de_inicio": "12/04/21",
         "fecha_de_terminacion": "12/09/21",
@@ -57,6 +72,9 @@
     {
         "indicador": "Jóvenes en Acción",
         "descripcion": "Impacto en los sectores de estrato 1 y 2",
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f374"
+        },
         "categoria": "Alta",
         "fecha_de_inicio": "15/02/21",
         "fecha_de_terminacion": "09/11/21",
@@ -68,6 +86,9 @@
     {
         "indicador": "Reuniones mediaticas",
         "descripcion": "Organización de reuniones de media electrónica",
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f375"
+        },
         "categoria": "Media",
         "fecha_de_inicio": "18/02/21",
         "fecha_de_terminacion": "24/06/21",
@@ -79,6 +100,9 @@
     {
         "indicador": "Maquetación Blender",
         "descripcion": "Utilización de Blender para maquetar",
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f376"
+        },
         "categoria": "Baja",
         "fecha_de_inicio": "12/06/21",
         "fecha_de_terminacion": "24/08/21",
@@ -90,6 +114,9 @@
     {
         "indicador": "HUB's tecnológicos",
         "descripcion": "Concentración en HUB's de tecnología",
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f377"
+        },
         "categoria": "Media",
         "fecha_de_inicio": "12/11/21",
         "fecha_de_terminacion": "26/12/21",
@@ -101,6 +128,9 @@
     {
         "indicador": "Clases de electrónica",
         "descripcion": "Educación sobre electrónica y media",
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f378"
+        },
         "categoria": "Alta",
         "fecha_de_inicio": "24/04/21",
         "fecha_de_terminacion": "12/08/21",

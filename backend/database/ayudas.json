@@ -1,0 +1,16 @@
+[
+    {
+        "usuario": {
+            "$oid": ""
+        },
+        "indicador_de_ayuda": {
+            "$oid": ""
+        },
+        "titulo_ayuda": "",
+        "fecha_ayuda": "",
+        "area_asignada": "",
+        "prioridad": "",
+        "motivo_ayuda": "",
+        "estado": ""
+    }
+]
