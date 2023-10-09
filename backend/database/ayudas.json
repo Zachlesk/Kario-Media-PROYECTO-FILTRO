@@ -1,16 +1,143 @@
 [
     {
         "usuario": {
-            "$oid": ""
+            "$oid": "6522c63bf766de5b88c7f36f"
         },
         "indicador_de_ayuda": {
-            "$oid": ""
+            "$oid": "6522c6adf766de5b88c7f37c"
         },
-        "titulo_ayuda": "",
-        "fecha_ayuda": "",
-        "area_asignada": "",
-        "prioridad": "",
-        "motivo_ayuda": "",
-        "estado": ""
+        "titulo_ayuda": "Actualización de programa de modelado 3D",
+        "fecha_ayuda": "23/11/2023",
+        "area_asignada": "Modelado",
+        "prioridad": "Alta",
+        "motivo_ayuda": "No se pudo cumplirt la fecha por errores en el software",
+        "estado": "Pendiente"
+    },
+    {
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f370"
+        },
+        "indicador_de_ayuda": {
+            "$oid": "6522c6adf766de5b88c7f37d"
+        },
+        "titulo_ayuda": "Falta de personal en maquetación",
+        "fecha_ayuda": "15/12/2023",
+        "area_asignada": "Maquetación",
+        "prioridad": "Media",
+        "motivo_ayuda": "Es imposible cumpliar las fechas con tan poco personal realizando maquetación",
+        "estado": "Pendiente"
+    },
+    {
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f371"
+        },
+        "indicador_de_ayuda": {
+            "$oid": "6522c6adf766de5b88c7f37e"
+        },
+        "titulo_ayuda": "Poca representación en colegios privados",
+        "fecha_ayuda": "03/07/2023",
+        "area_asignada": "Marketing",
+        "prioridad": "Baja",
+        "motivo_ayuda": "No tenemos peso al momento de hablar con colegios privados",
+        "estado": "Finalizada"
+    },
+    {
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f372"
+        },
+        "indicador_de_ayuda": {
+            "$oid": "6522c6adf766de5b88c7f37f"
+        },
+        "titulo_ayuda": "No se pudede vender por fuera de la ciudad los equipos",
+        "fecha_ayuda": "04/05/2023",
+        "area_asignada": "Ventas",
+        "prioridad": "Media",
+        "motivo_ayuda": "La empresa de correos tiene problemas operativos y no pueden enviar los equipos vendidos",
+        "estado": "Finalizada"
+    },
+    {
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f373"
+        },
+        "indicador_de_ayuda": {
+            "$oid": "6522c6adf766de5b88c7f380"
+        },
+        "titulo_ayuda": "Poco impacto en barrios de estrato 2 en Floridablanca",
+        "fecha_ayuda": "24/12/2023",
+        "area_asignada": "Comunicación",
+        "prioridad": "Media",
+        "motivo_ayuda": "Poca comunicación con barrios de estrato 2 por falta de interes",
+        "estado": "Pendiente"
+    }
+    ,
+    {
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f374"
+        },
+        "indicador_de_ayuda": {
+            "$oid": "6522c6adf766de5b88c7f381"
+        },
+        "titulo_ayuda": "Poco impacto en barrios de estrato 1 y 2",
+        "fecha_ayuda": "25/12/2023",
+        "area_asignada": "Comunicación",
+        "prioridad": "Media",
+        "motivo_ayuda": "Poca comunicación con barrios de estrato 1 y 2 por falta de interes",
+        "estado": "Pendiente"
+    },
+    {
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f375"
+        },
+        "indicador_de_ayuda": {
+            "$oid": "6522c6adf766de5b88c7f382"
+        },
+        "titulo_ayuda": "Runion de electronica no cumplida",
+        "fecha_ayuda": "21/04/2023",
+        "area_asignada": "Gerencia",
+        "prioridad": "Alta",
+        "motivo_ayuda": "Los demas departamento no cumplieron con la asistencia a la reunion de electronica",
+        "estado": "Finalizada"
+    },
+    {
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f376"
+        },
+        "indicador_de_ayuda": {
+            "$oid": "6522c6adf766de5b88c7f383"
+        },
+        "titulo_ayuda": "Falta de personal capacitado para modelado en Blender",
+        "fecha_ayuda": "31/12/2023",
+        "area_asignada": "Modelado",
+        "prioridad": "Alta",
+        "motivo_ayuda": "No se puede continuar con el modelado por falta de personal",
+        "estado": "Pendiente"
+    },
+    {
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f377"
+        },
+        "indicador_de_ayuda": {
+            "$oid": "6522c6adf766de5b88c7f384"
+        },
+        "titulo_ayuda": "Aun no se trabajos de HUB'S",
+        "fecha_ayuda": "16/06/2023",
+        "area_asignada": "HUB",
+        "prioridad": "Alta",
+        "motivo_ayuda": "EL departamento de HUB'S no cumple con el envio del trabajo",
+        "estado": "Finalizada"
+    },
+    {
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f378"
+        },
+        "indicador_de_ayuda": {
+            "$oid": "6522c6adf766de5b88c7f385"
+        },
+        "titulo_ayuda": "No hay equipos para educar sobre electrónica",
+        "fecha_ayuda": "02/03/2023",
+        "area_asignada": "Electronica",
+        "prioridad": "Media",
+        "motivo_ayuda": "Finanzas no da el presupuesto suficiente al departamento de electronica",
+        "estado": "Finalizada"
     }
 ]
