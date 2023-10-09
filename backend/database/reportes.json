@@ -1,15 +1,132 @@
 [
     {
         "usuario": {
-            "$oid": ""
+            "$oid": "6522c63bf766de5b88c7f36f"
         },
         "indicador_reportado": {
-            "$oid": ""
+            "$oid": "6522c6adf766de5b88c7f37c"
         },
-        "titulo_reporte": "",
-        "fecha_reporte": "",
-        "resultado_indicador": "",
-        "motivo_reporte": "",
-        "recomendacion": ""
+        "titulo_reporte": "Demoras en el Modelado 3D",
+        "fecha_reporte": "2023-10-09",
+        "resultado_indicador": "El modelado 3D de los proyectos está demorado y se espera completarlo dentro del plazo establecido.",
+        "motivo_reporte": "demora de avance del modelado 3D de proyectos.",
+        "recomendacion": "Acelerar el desarrollo del modelado 3D de manera urgente para cumplir con los plazos de entrega."
+    },
+    {
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f370"
+        },
+        "indicador_reportado": {
+            "$oid": "6522c6adf766de5b88c7f37d"
+        },
+        "titulo_reporte": "Problema Inpeccion preliminar Finca Galeón",
+        "fecha_reporte": "2023-10-08",
+        "resultado_indicador": "No se ha realizado la inspección preliminar de la Finca Galeón para el proyecto de licitación.",
+        "motivo_reporte": " Carencia de inspección preliminar de la Finca Galeón.",
+        "recomendacion": "Preparar un informe preliminar de las condiciones actuales antes de la licitación."
+    },
+    {
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f371"
+        },
+        "indicador_reportado": {
+            "$oid": "6522c6adf766de5b88c7f37e"
+        },
+        "titulo_reporte": "Inquietud hacia Colegios Privados",
+        "fecha_reporte": "2023-10-07",
+        "resultado_indicador": "Se pide un estudio sobre la oportunidad de negocio en el sector de colegios privados.",
+        "motivo_reporte": "Análisis de mercado de colegios privados.",
+        "recomendacion": "Explorar e Investigar las posibilidades de inversión en el sector de colegios privados."
+    },
+    {
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f372"
+        },
+        "indicador_reportado": {
+            "$oid": "6522c6adf766de5b88c7f37f"
+        },
+        "titulo_reporte": "Problemas productos Electrodomésticos",
+        "fecha_reporte": "2023-10-06",
+        "resultado_indicador": "Los precios de los electrodomésticos han aumentado en el mercado local.",
+        "motivo_reporte": "Informe de análisis de precios de electrodomésticos.",
+        "recomendacion": "Evaluar estrategias de adquisición para mitigar el impacto del aumento de precios."
+    },
+    {
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f373"
+        },
+        "indicador_reportado": {
+            "$oid": "6522c6adf766de5b88c7f380"
+        },
+        "titulo_reporte": "Investigacion Estrato 2 - Floridablanca",
+        "fecha_reporte": "2023-10-05",
+        "resultado_indicador": "Demoras completando la investigación sobre el estrato 2 en Floridablanca para futuras licitaciones.",
+        "motivo_reporte": "Demora en investigación de mercado sobre el estrato 2 en Floridablanca.",
+        "recomendacion": "Incrementar velocidad del mismo para las estrategias de licitación."
+    },
+    {
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f374"
+        },
+        "indicador_reportado": {
+            "$oid": "6522c6adf766de5b88c7f381"
+        },
+        "titulo_reporte": "Jóvenes en Acción",
+        "fecha_reporte": "2023-10-04",
+        "resultado_indicador": "Se requiere de la investigacion de programas de Jóvenes en Acción para posibles colaboraciones futuras.",
+        "motivo_reporte": "Investigacion y evaluación de programas sociales.",
+        "recomendacion": "Explorar oportunidades de colaboración con el programa Jóvenes en Acción."
+    },
+    {
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f378"
+        },
+        "indicador_reportado": {
+            "$oid": "6522c6adf766de5b88c7f382"
+        },
+        "titulo_reporte": "Organizacion Reuniones mediáticas",
+        "fecha_reporte": "2023-10-03",
+        "resultado_indicador": "Mala gestion en la organizacion de las reuniones mediáticas con socios potenciales.",
+        "motivo_reporte": "Informe de mala gestion de reuniones mediáticas.",
+        "recomendacion": "Mejorar la organizando y gestion de reuniones mediáticas para fortalecer relaciones comerciales."
+    },
+    {
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f375"
+        },
+        "indicador_reportado": {
+            "$oid": "6522c6adf766de5b88c7f383"
+        },
+        "titulo_reporte": "Equivocaciones Maquetación Blender",
+        "fecha_reporte": "2023-10-02",
+        "resultado_indicador": "Se observo equivocaciones en la estructura de la maquetación de proyectos utilizando Blender.",
+        "motivo_reporte": "Informe de equivocaciones en maquetación 3D.",
+        "recomendacion": "Corregir la Maquetacion de Blender para lograr una alta calidad."
+    },
+    {
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f376"
+        },
+        "indicador_reportado": {
+            "$oid": "6522c6adf766de5b88c7f384"
+        },
+        "titulo_reporte": "Necesidad de HUB's tecnológicos",
+        "fecha_reporte": "2023-10-01",
+        "resultado_indicador": "Se ha identificado la necesidad de establecer HUB's tecnológicos para proyectos futuros en varias zonas de la ciudad.",
+        "motivo_reporte": "Informe de análisis de necesidades tecnológicas.",
+        "recomendacion": "Planificar la creación de HUB's tecnológicos para impulsar la innovación en proyectos."
+    },
+    {
+        "usuario": {
+            "$oid": "6522c63bf766de5b88c7f377"
+        },
+        "indicador_reportado": {
+            "$oid": "6522c6adf766de5b88c7f385"
+        },
+        "titulo_reporte": "Demanda del mercado de las Clases de electrónica",
+        "fecha_reporte": "2023-09-30",
+        "resultado_indicador": "Las clases de electrónica han tenido una alta demanda en el mercado educativo.",
+        "motivo_reporte": "Informe de análisis de la demanda de clases de electrónica.",
+        "recomendacion": "Ampliar la oferta de clases de electrónica para aprovechar la demanda existente."
     }
 ]
