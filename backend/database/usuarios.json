@@ -1,0 +1,112 @@
+[
+    {
+        "nombre": "Zharick Rojas Ardila",
+        "email": "zharojas23@gmail.com",
+        "imagen": "https://pps.whatsapp.net/v/t61.24694-24/377904269_1026448665168415_5167264045592923332_n.jpg?ccb=11-4&oh=01_AdQEYb2juj0oBNSHFpOw9I-KZKFQcG8pnPS7k8vlQDgSJw&oe=652FD814&_nc_sid=000000&_nc_cat=109",
+        "telefono": "3107534094",
+        "cargo": "Gerencia",
+        "password": "1097183082",
+        "rol": "ADMIN",
+        "fecha_registro": "23/02/05",
+        "activo": true
+    },
+    {
+        "nombre": "Diego Fernando Aceros Villalba",
+        "email": "isomorphismay1@gmail.com",
+        "imagen": "https://pps.whatsapp.net/v/t61.24694-24/328723055_1421954545041533_8527224888106406963_n.jpg?ccb=11-4&oh=01_AdQlLj-VOEaPyz6lpAdc2iyHDkhhHaoG7o8zfkUJB6O8Eg&oe=652EFB65&_nc_sid=000000&_nc_cat=111",
+        "telefono": "3184925132",
+        "cargo": "Gerencia",
+        "password": "12345",
+        "rol": "ADMIN",
+        "fecha_registro": "23/04/02",
+        "activo": true
+    },
+    {
+        "nombre": "Yohan Enrique Pedraza Ríos",
+        "email": "http-yon@gmail.com",
+        "imagen": "https://pps.whatsapp.net/v/t61.24694-24/375761360_999284124656201_4800661798832085027_n.jpg?ccb=11-4&oh=01_AdTISssCAduh6WP9gv1GNfBV156gnO6X4H1NRFaFtRMo4A&oe=652EF91E&_nc_sid=000000&_nc_cat=110",
+        "telefono": "3172701972",
+        "cargo": "Gerencia",
+        "password": "12345",
+        "rol": "ADMIN",
+        "fecha_registro": "06/10/04",
+        "activo": true
+    },
+    {
+        "nombre": "Jose Daniel Vargas Santos",
+        "email": "josepon@gmail.com",
+        "imagen": "https://pps.whatsapp.net/v/t61.24694-24/323051986_1476693992856298_4708627178263362147_n.jpg?ccb=11-4&oh=01_AdSpXv-qNCmzw8-gKSD3xgsequK_TrZiO--2XraWwbX4KA&oe=652FEA19&_nc_sid=000000&_nc_cat=108",
+        "telefono": "3024636906",
+        "cargo": "Marketing",
+        "password": "12345",
+        "rol": "USER",
+        "fecha_registro": "03/01/00",
+        "activo": true
+    },
+    {
+        "nombre": "Miguel Angel Niño Silva",
+        "email": "miguepon@gmail.com",
+        "imagen": "https://pps.whatsapp.net/v/t61.24694-24/357685797_817854249888211_1970899918982542855_n.jpg?ccb=11-4&oh=01_AdSFK858-N9j91nZ3krvbci1ZxRlqrx4vbivHSaqT2okLg&oe=6527C414&_nc_sid=000000&_nc_cat=109",
+        "telefono": "3126078359",
+        "cargo": "Diseño",
+        "password": "12345",
+        "rol": "USER",
+        "fecha_registro": "06/10/03",
+        "activo": true
+    },
+    {
+        "nombre": "Deiby Alexander Parada Ramirez",
+        "email": "deibypeto@gmail.com",
+        "imagen": "https://pps.whatsapp.net/v/t61.24694-24/339219776_184459961083011_1570209304204912598_n.jpg?ccb=11-4&oh=01_AdQErE6KM30ia9J11Py5pVXUT9K68-J3Ik0MJfEchtGOkQ&oe=6527C729&_nc_sid=000000&_nc_cat=108",
+        "telefono": "3144559627",
+        "cargo": "Developers",
+        "password": "12345",
+        "rol": "USER",
+        "fecha_registro": "20/07/04",
+        "activo": true
+    },
+    {
+        "nombre": "Pedro Felipe Gómez Bonilla",
+        "email": "pedrogomezcl@gmail.com",
+        "imagen": "https://media.licdn.com/dms/image/C4D03AQESFyvFxd8UXw/profile-displayphoto-shrink_800_800/0/1616994803539?e=1702512000&v=beta&t=zYf-8HZTTmHqDMP5_FnLr5_UgO1xld-PYW3on970VaI",
+        "telefono": "3023019865",
+        "cargo": "Gerencia",
+        "password": "12345",
+        "rol": "ADMIN",
+        "fecha_registro": "10/02/00",
+        "activo": true
+    },
+    {
+        "nombre": "Amed Felipe Pinzón Silva",
+        "email": "amedfelipe@gmail.com",
+        "imagen": "https://media.licdn.com/dms/image/D5603AQEGqe4ldWsHcw/profile-displayphoto-shrink_800_800/0/1685039470905?e=1702512000&v=beta&t=OjGSlXj-H4leqHqVr1a9d4nrlpxtsgRYWBT8_SDZb_0",
+        "telefono": "3147414089",
+        "cargo": "Producción",
+        "password": "12345",
+        "rol": "USER",
+        "fecha_registro": "20/05/04",
+        "activo": true
+    },
+    {
+        "nombre": "Cristian Camilo Luna Morales",
+        "email": "cristianmoon@gmail.com",
+        "imagen": "https://pps.whatsapp.net/v/t61.24694-24/377960501_1113543886698455_8754292303490375849_n.jpg?ccb=11-4&oh=01_AdTi1rjQF9O-i35nGa3EsIRyfxC9_u69PbKsi4qMy6cWiQ&oe=652AEFD0&_nc_sid=000000&_nc_cat=105",
+        "telefono": "3017488020",
+        "cargo": "Producción",
+        "password": "1235",
+        "rol": "USER",
+        "fecha_registro": "07/03/04",
+        "activo": true
+    },
+    {
+        "nombre": "Cristian David Diaz Aza",
+        "email": "akio@gmail.com",
+        "imagen": "https://avatars.githubusercontent.com/u/101909972?v=4",
+        "telefono": "3016760518",
+        "cargo": "Developers",
+        "password": "1235",
+        "rol": "USER",
+        "fecha_registro": "10/12/02",
+        "activo": true
+    }
+]

@@ -1,0 +1,15 @@
+[
+    {
+        "usuario": {
+            "$oid": ""
+        },
+        "indicador_reportado": {
+            "$oid": ""
+        },
+        "titulo_reporte": "",
+        "fecha_reporte": "",
+        "resultado_indicador": "",
+        "motivo_reporte": "",
+        "recomendacion": ""
+    }
+]
