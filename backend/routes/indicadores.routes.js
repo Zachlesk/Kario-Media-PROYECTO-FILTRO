@@ -1,18 +1,18 @@
 import { Router } from "express";
 import {
-    getIndicadores,
-    getIndicador,
-    postIndicador,
-    deleteIndicador,
-    putIndicador
-} from '../controllers/indicadores.controller.js'
+    getReportes,
+    getReporte,
+    postReporte,
+    deleteReporte,
+    putReporte
+} from '../controllers/reportes.controller.js'
 
 const router = Router();
 
-router.get('/all', getIndicadores);
-router.get('/one/:id', getIndicador);
-router.post('/post', postIndicador);
-router.delete('/delete/:id', deleteIndicador);
-router.put('/put/:id', putIndicador);
+router.get('/all', getReportes);
+router.get('/one/:id', getReporte);
+router.post('/post', postReporte);
+router.delete('/delete/:id', deleteReporte);
+router.put('/put/:id', putReporte);
 
 export default router;
