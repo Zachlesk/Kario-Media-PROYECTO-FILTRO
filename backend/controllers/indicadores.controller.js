@@ -29,25 +29,8 @@ export const getIndicadores = async (req, res)=> {
                 foreignField: "_id",
                 as: "user"
             },
-        },
-        {
-            $unwind: "$user",
-        },
-        {
-            $project: {
-                _id: 1,
-                indicador: 1,
-                descripcion: 1,
-                "user.nombre": 1,
-                categoria: 1,
-                fecha_de_inicio: 1,
-                fecha_de_terminacion: 1,
-                formula : 1,
-                frecuencia: 1,
-                cumplimiento: 1,
-                area: 1
-            }
-        }]).toArray();
+        }
+        ]).toArray();
         res.json(indicador)
     } catch (error) {
         console.error(error)
