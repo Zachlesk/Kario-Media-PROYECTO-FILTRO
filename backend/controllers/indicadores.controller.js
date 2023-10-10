@@ -1,10 +1,27 @@
 import db from '../connection/connection.js';
 import { ObjectId } from 'mongodb';
+import jwt from "jsonwebtoken";
 
 const indicadores = db.collection('indicadores');
+const usuarioCollection = db.collection('usuarios');
 
 export const getIndicadores = async (req, res)=> {
     try {
+        const token = req.header("token");
+        if(!token){
+            return res.json({msg:"ingrese un token valido"})
+        }
+        let uid;
+        try {
+            const decoded = jwt.verify(token, process.env.SECRET_OR_PRIVATE_KEY);
+            uid = decoded.uid;
+        } catch (err) {
+            return res.status(401).json({ msg: "Token inválido" });
+        }
+        const usuarioValido = await usuarioCollection.findOne({ _id: new ObjectId(uid) });
+        if (!usuarioValido) {
+            return res.json({ msg: "usuario no validado" })
+        } 
         const indicador = await indicadores.aggregate([{
             $lookup: {
                 from: "usuarios",
@@ -39,6 +56,21 @@ export const getIndicadores = async (req, res)=> {
 
 export const getIndicador = async (req, res)=>{
     try {
+        const token = req.header("token");
+        if(!token){
+            return res.json({msg:"ingrese un token valido"})
+        }
+        let uid;
+        try {
+            const decoded = jwt.verify(token, process.env.SECRET_OR_PRIVATE_KEY);
+            uid = decoded.uid;
+        } catch (err) {
+            return res.status(401).json({ msg: "Token inválido" });
+        }
+        const usuarioValido = await usuarioCollection.findOne({ _id: new ObjectId(uid) });
+        if (!usuarioValido) {
+            return res.json({ msg: "usuario no validado" })
+        } 
         const objectIdParams = req.params.id;
         const objectID = new ObjectId(objectIdParams);
         const indicador = await indicadores.findOne({_id: objectID});
@@ -50,7 +82,21 @@ export const getIndicador = async (req, res)=>{
 
 export const postIndicador = async (req, res)=>{
     try {
-
+        const token = req.header("token");
+        if(!token){
+            return res.json({msg:"ingrese un token valido"})
+        }
+        let uid;
+        try {
+            const decoded = jwt.verify(token, process.env.SECRET_OR_PRIVATE_KEY);
+            uid = decoded.uid;
+        } catch (err) {
+            return res.status(401).json({ msg: "Token inválido" });
+        }
+        const usuarioValido = await usuarioCollection.findOne({ _id: new ObjectId(uid) });
+        if (!usuarioValido) {
+            return res.json({ msg: "usuario no validado" })
+        } 
         const { indicador, 
             descripcion, 
             usuario,
@@ -86,6 +132,21 @@ export const postIndicador = async (req, res)=>{
 
 export const deleteIndicador = async (req, res)=>{
     try {
+        const token = req.header("token");
+        if(!token){
+            return res.json({msg:"ingrese un token valido"})
+        }
+        let uid;
+        try {
+            const decoded = jwt.verify(token, process.env.SECRET_OR_PRIVATE_KEY);
+            uid = decoded.uid;
+        } catch (err) {
+            return res.status(401).json({ msg: "Token inválido" });
+        }
+        const usuarioValido = await usuarioCollection.findOne({ _id: new ObjectId(uid) });
+        if (!usuarioValido) {
+            return res.json({ msg: "usuario no validado" })
+        } 
         const objectIdParams = req.params.id;
         const objectID = new ObjectId(objectIdParams);
         const indicador = await indicadores.deleteOne({_id:objectID});
@@ -97,6 +158,21 @@ export const deleteIndicador = async (req, res)=>{
 
 export const putIndicador = async(req, res)=>{
     try {
+        const token = req.header("token");
+        if(!token){
+            return res.json({msg:"ingrese un token valido"})
+        }
+        let uid;
+        try {
+            const decoded = jwt.verify(token, process.env.SECRET_OR_PRIVATE_KEY);
+            uid = decoded.uid;
+        } catch (err) {
+            return res.status(401).json({ msg: "Token inválido" });
+        }
+        const usuarioValido = await usuarioCollection.findOne({ _id: new ObjectId(uid) });
+        if (!usuarioValido) {
+            return res.json({ msg: "usuario no validado" })
+        } 
         const objectIdParams = req.params.id;
         const objectID = new ObjectId(objectIdParams);
 
