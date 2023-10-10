@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Button, Checkbox, Form } from "semantic-ui-react";
+import { Button, Form } from "semantic-ui-react";
+
+
+
+const token = localStorage.getItem("token")
+const config = {
+  headers: {
+    token: token
+  },
+}
+
 
 const CreateReportes = () => {
-    let history = useNavigate()
+
+  let history = useNavigate()
 
   const [usuario, set_usuario] = useState("");
   const [indicador_reportado, set_indicador_reportado] = useState("");
@@ -13,6 +24,27 @@ const CreateReportes = () => {
   const [resultado_indicador, set_resultado_indicador] = useState("");
   const [motivo_reporte, set_motivo_reporte] = useState("");
   const [recomendacion, set_recomendacion] = useState("");
+
+  const [allUsuarios, setAllUsuarios] = useState([]);
+  const [allIndicadores, setAllIndicadores] = useState([]);
+
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const allUsers = await axios.get("http://localhost:8020/usuarios/all", config);
+        const allIndicadores = await axios.get("http://localhost:8020/indicadores/all", config);
+        setAllIndicadores(allIndicadores.data);
+        setAllUsuarios(allUsers.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [])
+
 
   const postData = () => {
     axios
@@ -24,31 +56,41 @@ const CreateReportes = () => {
         resultado_indicador,
         motivo_reporte,
         recomendacion,
-      })
+      }, config)
       .then(() => {
         history("/reportes")
+      })
+      .catch(err => {
+        console.log(err);
       });
   };
 
   return (
     <div>
       <Form className="createForm">
+
         <Form.Field>
-          <label>usuario</label>
-          <input
-            placeholder="usuario"
-            value={usuario}
-            onChange={(e) => set_usuario(e.target.value)}
-          ></input>
+          <label> seleccione usuario </label>
+          <select name="usuarios">
+            <option> seleccione usuario nuevo</option>
+            {allUsuarios.map((data, i) => {
+              return (
+                <option key={i} value={data._id} onClick={(e)=> set_usuario(e.target.value)}> {data.nombre} </option>
+              )
+            })}
+          </select>
         </Form.Field>
 
         <Form.Field>
-          <label>indicador reportado</label>
-          <input
-            placeholder="indicador reportado"
-            value={indicador_reportado}
-            onChange={(e) => set_indicador_reportado(e.target.value)}
-          ></input>
+        <label> seleccione indicador </label>
+          <select name="indicador">
+          <option> seleccione indicador</option>
+            {allIndicadores.map((data, i) => {
+              return (
+                <option key={i} value={data._id} onClick={(e)=> set_indicador_reportado(e.target.value)}> {data.indicador}  </option>
+              )
+            })}
+          </select>
         </Form.Field>
 
         <Form.Field>
@@ -96,9 +138,9 @@ const CreateReportes = () => {
           ></input>
         </Form.Field>
 
-          <Button type="submit" onClick={postData}>
-            Crear
-          </Button>
+        <Button type="submit" onClick={postData}>
+          Crear
+        </Button>
       </Form>
     </div>
   );

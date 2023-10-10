@@ -6,7 +6,6 @@ import {
     deleteAyuda,
     putAyuda
 } from "../controllers/ayudas.controller.js";
-import router from "./indicadores.routes";
 
 const router = Router();
 
