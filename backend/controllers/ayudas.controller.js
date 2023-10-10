@@ -23,7 +23,23 @@ export const getAyudas = async (req, res)=> {
             return res.json({ msg: "usuario no validado" })
         } 
         
-        const ayuda = await ayudas.find().toArray();
+        const ayuda = await ayudas.aggregate([
+            {
+                $lookup: {
+                    from: "usuarios",
+                    localField: "usuario",
+                    foreignField: "_id",
+                    as: "detalleUsuario"
+                }
+            },
+            {
+                $lookup: {
+                    from: "indicadores",
+                    localField: "indicador_de_ayuda",
+                    foreignField: "_id",
+                    as: "detallesIndicadores"
+                }
+            }]).toArray();
         res.json(ayuda)
     } catch (error) {
         console.error(error)
