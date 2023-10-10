@@ -88,7 +88,7 @@ export default function ReadReportes() {
                 <Table.Cell>{data.resultado_indicador}</Table.Cell>
                 <Table.Cell>{data.motivo_reporte}</Table.Cell>
                 <Table.Cell>{data.recomendacion}</Table.Cell>
-                <Link to="/update">
+                <Link to="/updateReporte">
                   <Table.Cell>
                     <Button onClick={() => setData(data)}>Actualizar</Button>
                   </Table.Cell>
