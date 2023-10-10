@@ -24,6 +24,7 @@ const CreateReportes = () => {
   const [resultado_indicador, set_resultado_indicador] = useState("");
   const [motivo_reporte, set_motivo_reporte] = useState("");
   const [recomendacion, set_recomendacion] = useState("");
+  
 
   const [allUsuarios, setAllUsuarios] = useState([]);
   const [allIndicadores, setAllIndicadores] = useState([]);
