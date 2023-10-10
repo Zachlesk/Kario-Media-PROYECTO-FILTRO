@@ -2,13 +2,20 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import CreateReportes from "./CreateReportes";
+
+const token = localStorage.getItem("token")
+    const config = {
+      headers: {
+        token: token
+      },
+    }
 
 export default function ReadReportes() {
   const [APIData, setAPIData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8020/reportes/all").then((response) => {
+    axios.get("http://localhost:8020/reportes/all", config)
+    .then((response) => {
       console.log(response.data);
       setAPIData(response.data);
     });
@@ -38,13 +45,15 @@ export default function ReadReportes() {
   };
 
   const getData = () => {
-    axios.get("http://localhost:8020/reportes/all").then((getData) => {
+    axios.get("http://localhost:8020/reportes/all",config)
+    .then((getData) => {
       setAPIData(getData.data);
     });
   };
 
   const onDelete = (id) => {
-    axios.delete(`http://localhost:8020/reportes/delete/${id}`).then(() => {
+    axios.delete(`http://localhost:8020/reportes/delete/${id}`,config)
+    .then(() => {
       getData();
     });
   };

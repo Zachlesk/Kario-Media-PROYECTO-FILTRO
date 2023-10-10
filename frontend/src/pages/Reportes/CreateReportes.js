@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Button, Checkbox, Form } from "semantic-ui-react";
+import { Button, Form } from "semantic-ui-react";
+
+
+const token = localStorage.getItem("token")
+    const config = {
+      headers: {
+        token: token
+      },
+    }
 
 const CreateReportes = () => {
     let history = useNavigate()
@@ -26,7 +34,11 @@ const CreateReportes = () => {
         recomendacion,
       })
       .then(() => {
-        history("/reportes")
+        console.log("hola");
+        //history("/reportes")
+      })
+      .catch(err =>{
+        console.log(err);
       });
   };
 
