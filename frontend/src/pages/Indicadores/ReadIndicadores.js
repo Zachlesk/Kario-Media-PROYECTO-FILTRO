@@ -31,6 +31,12 @@ const config = {
 export default function ReadIndicadores() {
   //useState
 
+  //MODALPOST
+  const [showModalPost, setShowModalPost] = useState(false);
+
+  const handleShowPost = () => setShowModalPost(true);
+  const handleClosePost = () => setShowModalPost(false);
+
   //mostrar boton eliminar
   const [botonDelete, setBotonDelete] = useState(false);
 
@@ -125,6 +131,16 @@ export default function ReadIndicadores() {
 
       <div className="container-main">
         <img src={logo} alt="logo" width={30} style={{ marginTop: 30 }}></img>
+      <Navbar handleShow={handleShow} 
+              botonDelete={botonDelete} 
+              setBotonDelete={setBotonDelete} 
+              handleShowPost={handleShowPost}
+              show={showModalPost}
+              handleClosePost={handleClosePost}
+      />
+
+      <div className='container-main'>
+        <img src={logo} alt='logo' width={30} style={{ marginTop: 30 }}></img>
         <h3> Panel de indicadores </h3>
         <h5>
           Aqui puedes visualizar los indicadores propuestos y añadidos por tu
@@ -244,6 +260,7 @@ export default function ReadIndicadores() {
 
       {/* modal de usuario */}
       <ModalUser handleClose={handleClose} show={show} />
+    </div>
     </div>
   );
 }
