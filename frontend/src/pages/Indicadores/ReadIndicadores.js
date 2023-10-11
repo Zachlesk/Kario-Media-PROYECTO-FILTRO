@@ -4,6 +4,7 @@ import { Table, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import BotonModal from "../../components/BotonModal";
 import ModalUser from "../../components/ModalUser";
+import Navbar from "../../components/Nav";
 
 
 const token = localStorage.getItem("token");
@@ -80,7 +81,8 @@ export default function ReadIndicadores() {
   };
   return (
     <div>
-      <div className="barra">
+    <Navbar> </Navbar>
+      {/* <div className="barra">
         <div>
           <Link to="/createIndicador">
             <Button className="boton-barra"> Añadir </Button>
@@ -121,7 +123,7 @@ export default function ReadIndicadores() {
           <BotonModal handleShow={handleShow} />
         </div>
 
-      </div>
+      </div> */}
 
       <Table singleLine>
         <Table.Header>
