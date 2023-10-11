@@ -1,0 +1,55 @@
+.title {
+    display: flex;
+    justify-content: space-between;
+    margin: 60px 60px 20px 60px;
+}
+
+.botonsito {
+    width: 200px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #FF6F2C;
+    border: #FF6F2C;
+    color: white;
+    font-weight: lighter;
+}
+
+.description {
+    margin: 1px 60px 20px 60px;
+}
+
+.reports {
+    margin: auto;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#description {
+    background-color: rgb(236, 233, 233);
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+.col {
+    width: 500px;
+    margin-left: 20px;
+}
+
+/* .checkbox {
+    color: black !important ;
+}
+ */
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: auto;
+    left: 0;
+    right: 0;
+}
+
