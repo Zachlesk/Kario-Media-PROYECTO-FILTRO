@@ -8,4 +8,27 @@ body {
    font-weight: normal;
    font-style: normal;
  }
+ .barra{
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+  margin: 1rem;
+ }
+
+.boton-barra{
+  background-color: orange;
+  padding: 1rem;
+
+}
  
+
+.modal-dialog {
+  position: fixed;
+  margin: auto;
+  width: 520px;
+  height: 100%;
+  right: 0px;
+}
+.modal-content {
+  height: 100%;
+}
