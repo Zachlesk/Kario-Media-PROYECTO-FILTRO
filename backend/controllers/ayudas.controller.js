@@ -160,13 +160,15 @@ export const putAyuda = async(req, res)=>{
             return res.json({ msg: "usuario no validado" })
         } 
         const objectIdParams = req.params.id;
-        const objectID = new ObjectId(objectIdParams);
-        const usuarioID = new ObjectId(usuario); 
-        const indicadorID = new ObjectId(indicador_de_ayuda);
+        
 
         const {usuario, indicador_de_ayuda, titulo_ayuda,
             fecha_ayuda, area_asignada, prioridad, motivo_ayuda,
             estado } = req.body
+
+        const objectID = new ObjectId(objectIdParams);
+        const usuarioID = new ObjectId(usuario); 
+        const indicadorID = new ObjectId(indicador_de_ayuda);
 
         const data = {
             usuario: usuarioID,
