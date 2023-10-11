@@ -29,7 +29,6 @@ function App() {
 
         <Route path="/ayudas" element={<ReadAyudas />}/>
 
-
       </Routes>
     </BrowserRouter>
   );

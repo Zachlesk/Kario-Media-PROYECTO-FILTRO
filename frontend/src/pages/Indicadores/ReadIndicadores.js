@@ -1,12 +1,20 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Table, Button } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import { Table } from "react-bootstrap";
 import BotonModal from "../../components/BotonModal";
 import ModalUser from "../../components/ModalUser";
+
+import logo from "../../assets/logo.png"
+import green from '../../assets/Circled Notch-Green.png'
+import Navbar from '../../components/NavBar/Navbar';
+import "./Indicadores.css"
+
 import UpdateIndicador from "./UpdateIndicador";
 import CreateIndicador from "./CreateIndicador";
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const token = localStorage.getItem("token");
 const config = {
@@ -92,6 +100,8 @@ export default function ReadIndicadores() {
   };
   return (
     <div>
+      <Navbar handleShow={handleShow} botonDelete={botonDelete} setBotonDelete={setBotonDelete} />
+
       <div className="barra">
         <div>
           <Button className="btn btn-warning btn-round add" onClick={handleShowPost}>
@@ -136,6 +146,99 @@ export default function ReadIndicadores() {
 
       </div>
 
+      <div className='container-main'>
+        <img src={logo} alt='logo' width={30} style={{ marginTop: 30 }}></img>
+        <h3> Panel de indicadores </h3>
+        <h5> Aqui puedes visualizar los indicadores propuestos y añadidos por tu equipo de trabajo, Si quieres ver más detalles, dale click a uno de ellos para más información. </h5>
+      </div>
+
+      <div className="table-container">
+        <Table>
+          <thead>
+            <tr>
+              <th> Indicador </th>
+              <th> Descripcion </th>
+              <th> Categoría </th>
+              <th> Fecha de inicio </th>
+              <th> Fecha de terminación </th>
+              <th> Formula </th>
+              <th> Frecuencia </th>
+              <th> Cumplimiento </th>
+              <th> Área </th>
+              <th> Actualizar </th>
+              {botonDelete ? (<th>Eliminar</th>) : null}
+            </tr>
+          </thead>
+          <tbody>
+            {APIData.map(data => {
+              return (
+                <tr className='render' >
+                  <td>
+                    <div className="text">
+                      <b> {data.indicador} </b>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="text">
+                      <b> {data.descripcion} </b>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="text">
+                      <b> {data.categoria} </b>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="text">
+                      <b> {data.fecha_de_inicio} </b>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="text">
+                      <b> {data.fecha_de_terminacion} </b>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="text">
+                      <b> {data.formula} </b>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="text">
+                      <b> {data.frecuencia} </b>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="text">
+                      <b> <img src={green} alt='Cumplimiento' className='alt' width={40} /> </b>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="text">
+                      <b> {data.area} </b>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="text">
+                      <i class="fa fa-bars" aria-hidden="true"></i>
+                    </div>
+                  </td>
+                  <td>
+                    {botonDelete ? (
+                      <td>
+                        <div className="text" onClick={() => onDelete(data._id)}>
+                          <b> delete </b>
+                        </div>
+                      </td>) : null}
+                  </td>
+                </tr>
+              )
+            })}
+
+          </tbody>
+
+          <Table.Body>
+
       <Table singleLine>
         <Table.Header>
           <Table.Row>
@@ -154,6 +257,7 @@ export default function ReadIndicadores() {
           </Table.Row>
         </Table.Header>
         <Table.Body>
+
           {APIData.map((data) => {
             return (
               <Table.Row>
@@ -182,8 +286,9 @@ export default function ReadIndicadores() {
             );
           })}
         </Table.Body>
-      </Table>
-
+        </Table>
+      </div>
+      <button className='botonsito'> ¿A dónde quieres ir? </button>
 
       {/* modal de usuario */}
       <ModalUser handleClose={handleClose} show={show} />
