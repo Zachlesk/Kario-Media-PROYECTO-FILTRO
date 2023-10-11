@@ -38,6 +38,7 @@ function App() {
       </BrowserRouter>
     </ChakraProvider>
   );
+  
 }
 
 export default App;
