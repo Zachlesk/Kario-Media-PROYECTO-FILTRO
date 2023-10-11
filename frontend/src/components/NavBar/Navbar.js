@@ -11,14 +11,15 @@ import 'font-awesome/css/font-awesome.min.css'
 import './Navbar.css'
 
 import { Link } from 'react-router-dom';
+import CreateIndicador from '../../pages/Indicadores/CreateIndicador';
 
-export default function Navbar({handleShow,botonDelete,setBotonDelete}) {
+export default function Navbar({handleShow,botonDelete,setBotonDelete, handleShowPost, show, handleClosePost}) {
     return(
       <div> 
       <nav className="navbar navbar-expand-lg">
       <div className='info'>
 
-      <h5 className="mr-auto">
+      <h5 className="mr-auto" onClick={handleShowPost}>
       <Link to="">
       <img src={add} width={30} alt='Imagen de add'/> Añadir
       </Link>
@@ -72,6 +73,7 @@ export default function Navbar({handleShow,botonDelete,setBotonDelete}) {
 
       </div>
     </nav>
+    <CreateIndicador show={show} handleClosePost={handleClosePost} />
     </div>
     )
 }

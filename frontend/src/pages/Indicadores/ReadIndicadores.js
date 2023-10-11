@@ -32,7 +32,11 @@ const config = {
 
 export default function ReadIndicadores() {
 
-  //useState
+  //MODALPOST
+  const [showModalPost, setShowModalPost] = useState(false);
+
+  const handleShowPost = () => setShowModalPost(true);
+  const handleClosePost = () => setShowModalPost(false);
 
   //mostrar boton eliminar
   const [botonDelete, setBotonDelete] = useState(false);
@@ -122,7 +126,13 @@ export default function ReadIndicadores() {
   return (
     <div>
 
-      <Navbar handleShow={handleShow} botonDelete={botonDelete} setBotonDelete={setBotonDelete} />
+      <Navbar handleShow={handleShow} 
+              botonDelete={botonDelete} 
+              setBotonDelete={setBotonDelete} 
+              handleShowPost={handleShowPost}
+              show={showModalPost}
+              handleClosePost={handleClosePost}
+      />
 
       <div className='container-main'>
         <img src={logo} alt='logo' width={30} style={{ marginTop: 30 }}></img>
