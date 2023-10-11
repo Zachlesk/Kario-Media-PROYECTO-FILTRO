@@ -10,6 +10,7 @@ import UpdateIndicador from './pages/Indicadores/UpdateIndicador';
 import LoadingScreen from './components/LoadingScreen';
 import Reportao from './templates/reportes/Reportes'
 import ReadAyudas from './pages/Ayudas/ReadAyudas';
+import Ayuditas from './templates/ayudas/Ayudas';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
       <Routes>
         <Route path="/"  element={<Login />}/>
 
+
+        <Route path="/ayuditas"  element={<Ayuditas />} />
         <Route path="/loading"  element={<LoadingScreen />} />
         <Route path="/reportao"  element={<Reportao />} />
         <Route path="/reportes" element={<ReadReportes />} />
