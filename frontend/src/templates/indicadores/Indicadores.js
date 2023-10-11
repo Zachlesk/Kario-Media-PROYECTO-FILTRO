@@ -3,6 +3,7 @@ import logo from '../../assets/logo.png'
 import { Table } from "react-bootstrap";
 import green from '../../assets/Circled Notch-Green.png'
 import Navbar from '../navbar/Navbar';
+
 export default function Indicadorest() {
 
   return (

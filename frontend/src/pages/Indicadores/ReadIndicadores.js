@@ -1,4 +1,4 @@
-import axios from "axios";
+/* import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
@@ -21,9 +21,9 @@ const config = {
   headers: {
     token: token,
   },
-};
+}; */
 
-export default function ReadIndicadores() {
+/* export default function ReadIndicadores() {
 
   const [botonDelete, setBotonDelete] = useState(false);
 
@@ -144,7 +144,7 @@ export default function ReadIndicadores() {
           <BotonModal handleShow={handleShow} />
         </div>
 
-      </div>
+      </div> 
 
       <div className='container-main'>
         <img src={logo} alt='logo' width={30} style={{ marginTop: 30 }}></img>
@@ -286,13 +286,11 @@ export default function ReadIndicadores() {
             );
           })}
         </Table.Body>
-        </Table>
-      </div>
-      <button className='botonsito'> ¿A dónde quieres ir? </button>
+      </Table>
 
-      {/* modal de usuario */}
+
+      {/* modal de usuario *//* }
       <ModalUser handleClose={handleClose} show={show} />
-
-    </div>
   );
 }
+ */ 
