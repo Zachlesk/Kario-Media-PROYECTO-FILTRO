@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Button, Form } from "semantic-ui-react";
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Modal from 'react-bootstrap/Modal';
 
 
 
@@ -13,7 +15,7 @@ const config = {
 }
 
 
-const CreateIndicador = () => {
+const CreateIndicador = ({ show, handleClosePost }) => {
 
   let history = useNavigate()
 
@@ -70,108 +72,103 @@ const CreateIndicador = () => {
   };
 
   return (
-    <div>
-      <Form className="createForm">
+    <>
+      <div>
+        <Modal show={show} onHide={handleClosePost} className="custom-modal">
 
-      <Form.Field>
-          <label>titulo reporte</label>
-          <input
-            placeholder="indicador"
-            value={indicador}
-            onChange={(e) => set_indicador(e.target.value)}
-          ></input>
-        </Form.Field>
+          <Modal.Header className='b'>
+            <Modal.Title> ¡Agrega una nuevo alimento! 🌸 </Modal.Title>
+          </Modal.Header>
+          <Modal.Body className='a'>
+            <label>titulo reporte</label>
+            <input
+              placeholder="indicador"
+              value={indicador}
+              onChange={(e) => set_indicador(e.target.value)}
+            ></input>
 
-        <Form.Field>
-          <label>descripcion</label>
-          <input
-            placeholder="descripcion"
-            value={descripcion}
-            onChange={(e) => set_descripcion(e.target.value)}
-          ></input>
-        </Form.Field>
+            <label>descripcion</label>
+            <input
+              placeholder="descripcion"
+              value={descripcion}
+              onChange={(e) => set_descripcion(e.target.value)}
+            ></input>
 
-        <Form.Field>
-          <label> seleccione usuario </label>
-          <select name="usuarios">
-            <option> seleccione usuario nuevo</option>
-            {allUsuarios.map((data, i) => {
-              return (
-                <option key={i} value={data._id} onClick={(e)=> set_usuario(e.target.value)}> {data.nombre} </option>
-              )
-            })}
-          </select>
-        </Form.Field>
- 
-        <Form.Field>
-          <label>categoria</label>
-          <input
-            placeholder="categoria"
-            value={categoria}
-            onChange={(e) => set_categoria(e.target.value)}
-          ></input>
-        </Form.Field>
+            <label> seleccione usuario </label>
+            <select name="usuarios">
+              <option> seleccione usuario nuevo</option>
+              {allUsuarios.map((data, i) => {
+                return (
+                  <option key={i} value={data._id} onClick={(e) => set_usuario(e.target.value)}> {data.nombre} </option>
+                )
+              })}
+            </select>
 
-        <Form.Field>
-          <label>fecha de inicio</label>
-          <input
-            placeholder="fecha de inicio"
-            value={fecha_de_inicio}
-            onChange={(e) => set_fecha_de_inicio(e.target.value)}
-          ></input>
-        </Form.Field>
+            <label>categoria</label>
+            <input
+              placeholder="categoria"
+              value={categoria}
+              onChange={(e) => set_categoria(e.target.value)}
+            ></input>
 
-        <Form.Field>
-          <label>fecha de terminacion</label>
-          <input
-            placeholder="fecha de terminacion"
-            value={fecha_de_terminacion}
-            onChange={(e) => set_fecha_de_terminacion(e.target.value)}
-          ></input>
-        </Form.Field>
+            <label>fecha de inicio</label>
+            <input
+              placeholder="fecha de inicio"
+              value={fecha_de_inicio}
+              onChange={(e) => set_fecha_de_inicio(e.target.value)}
+            ></input>
 
-        <Form.Field>
-          <label>formula</label>
-          <input
-            placeholder="formula"
-            value={formula}
-            onChange={(e) => set_formula(e.target.value)}
-          ></input>
-        </Form.Field>
+            <label>fecha de terminacion</label>
+            <input
+              placeholder="fecha de terminacion"
+              value={fecha_de_terminacion}
+              onChange={(e) => set_fecha_de_terminacion(e.target.value)}
+            ></input>
 
-        <Form.Field>
-          <label>frecuencia</label>
-          <input
-            placeholder="frecuencia"
-            value={frecuencia}
-            onChange={(e) => set_frecuencia(e.target.value)}
-          ></input>
-        </Form.Field>
+            <label>formula</label>
+            <input
+              placeholder="formula"
+              value={formula}
+              onChange={(e) => set_formula(e.target.value)}
+            ></input>
 
-        <Form.Field>
-          <label>cumplimiento</label>
-          <input
-            placeholder="cumplimiento"
-            value={cumplimiento}
-            onChange={(e) => set_cumplimiento(e.target.value)}
-          ></input>
-        </Form.Field>
+            <label>frecuencia</label>
+            <input
+              placeholder="frecuencia"
+              value={frecuencia}
+              onChange={(e) => set_frecuencia(e.target.value)}
+            ></input>
 
-        <Form.Field>
-          <label>area</label>
-          <input
-            placeholder="area"
-            value={area}
-            onChange={(e) => set_area(e.target.value)}
-          ></input>
-        </Form.Field>
+            <label>cumplimiento</label>
+            <input
+              placeholder="cumplimiento"
+              value={cumplimiento}
+              onChange={(e) => set_cumplimiento(e.target.value)}
+            ></input>
 
+            <label>area</label>
+            <input
+              placeholder="area"
+              value={area}
+              onChange={(e) => set_area(e.target.value)}
+            ></input>
 
-        <Button type="submit" onClick={postData}>
-          Crear
-        </Button>
-      </Form>
-    </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <div className="text-center ">
+              Designed by: Zachlesk
+            </div>
+            <Button type="submit" onClick={postData}>
+              Agrega
+            </Button>
+            <Button type="submit" variant="secondary" onClick={handleClosePost}>
+              Cerrar
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    </>
+
   );
 };
 

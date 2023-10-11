@@ -4,7 +4,9 @@ import { Table, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import BotonModal from "../../components/BotonModal";
 import ModalUser from "../../components/ModalUser";
-
+import UpdateIndicador from "./UpdateIndicador";
+import CreateIndicador from "./CreateIndicador";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const token = localStorage.getItem("token");
 const config = {
@@ -14,13 +16,23 @@ const config = {
 };
 
 export default function ReadIndicadores() {
-  
+
   const [botonDelete, setBotonDelete] = useState(false);
 
   //bootstrap para perfil
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [showModal, setShowModal] = useState(false);
+  const [showModalPost, setShowModalPost] = useState(false);
+
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
+
+  const handleClosePost = () => setShowModalPost(false);
+  const handleShowPost = () => setShowModalPost(true);
+
 
 
   const [APIData, setAPIData] = useState([]);
@@ -82,9 +94,10 @@ export default function ReadIndicadores() {
     <div>
       <div className="barra">
         <div>
-          <Link to="/createIndicador">
-            <Button className="boton-barra"> Añadir </Button>
-          </Link>
+          <Button className="btn btn-warning btn-round add" onClick={handleShowPost}>
+            Crear
+          </Button>
+          {showModalPost && <CreateIndicador show={showModalPost} handleClosePost={handleClosePost} />}
         </div>
 
         <Button
@@ -100,7 +113,7 @@ export default function ReadIndicadores() {
             onClick={() => {
               if (botonDelete) {
                 setBotonDelete(false);
-              }else{
+              } else {
                 setBotonDelete(true)
               }
             }}
@@ -114,7 +127,7 @@ export default function ReadIndicadores() {
         <div>
           <Link to="/reportes">reportar</Link>
         </div>
-        
+
         <div>ayuda</div>
 
         <div>
@@ -137,8 +150,8 @@ export default function ReadIndicadores() {
             <Table.HeaderCell>area</Table.HeaderCell>
 
             <Table.HeaderCell>Actualizar</Table.HeaderCell>
-              {botonDelete ? (<Table.HeaderCell>Eliminar</Table.HeaderCell>) : null}
-            </Table.Row>
+            {botonDelete ? (<Table.HeaderCell>Eliminar</Table.HeaderCell>) : null}
+          </Table.Row>
         </Table.Header>
         <Table.Body>
           {APIData.map((data) => {
@@ -153,14 +166,18 @@ export default function ReadIndicadores() {
                 <Table.Cell>{data.frecuencia}</Table.Cell>
                 <Table.Cell>{data.cumplimiento}</Table.Cell>
                 <Table.Cell>{data.area}</Table.Cell>
-                <Link to="/updateIndicador">
-                  <Table.Cell>
-                    <Button onClick={() => setData(data)}>Actualizar</Button>
-                  </Table.Cell>
-                </Link>
+                <Table.Cell>
+                  <Button
+                    className="btn btn-warning"
+                    onClick={() => { handleShowModal(); setData(data); }}
+                  >
+                    Editar
+                  </Button>
+                  {showModal && <UpdateIndicador show={showModal} handleClose={handleCloseModal} />}
+                </Table.Cell>
 
                 {botonDelete ? (<Table.Cell> <Button onClick={() => onDelete(data._id)}>Eliminar</Button> </Table.Cell>) : null}
-                
+
               </Table.Row>
             );
           })}
@@ -168,8 +185,8 @@ export default function ReadIndicadores() {
       </Table>
 
 
-   {/* modal de usuario */}
-    <ModalUser handleClose={handleClose} show={show} />
+      {/* modal de usuario */}
+      <ModalUser handleClose={handleClose} show={show} />
 
     </div>
   );
