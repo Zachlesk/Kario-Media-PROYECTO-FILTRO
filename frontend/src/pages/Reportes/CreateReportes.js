@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Button, Form } from "semantic-ui-react";
+import "./Reportes.css"
 
 
 
@@ -34,10 +35,22 @@ const CreateReportes = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const allUsers = await axios.get("http://localhost:8020/usuarios/all", config);
+
+        
+        const base64Url = token.split(".")[1];
+        const base64 = base64Url.replace("-", "+").replace("_", "/");
+        const userData = JSON.parse(window.atob(base64));
+        
+        const response = await axios.get(
+          `http://localhost:8020/usuarios/one/${userData.uid}`,
+          config
+        );
+
+        console.log(response.data);
+        set_usuario(response.data._id);
+
         const allIndicadores = await axios.get("http://localhost:8020/indicadores/all", config);
         setAllIndicadores(allIndicadores.data);
-        setAllUsuarios(allUsers.data);
       } catch (error) {
         console.error(error);
       }
@@ -69,18 +82,6 @@ const CreateReportes = () => {
   return (
     <div>
       <Form className="createForm">
-
-        <Form.Field>
-          <label> seleccione usuario </label>
-          <select name="usuarios">
-            <option> seleccione usuario nuevo</option>
-            {allUsuarios.map((data, i) => {
-              return (
-                <option key={i} value={data._id} onClick={(e)=> set_usuario(e.target.value)}> {data.nombre} </option>
-              )
-            })}
-          </select>
-        </Form.Field>
 
         <Form.Field>
         <label> seleccione indicador </label>
