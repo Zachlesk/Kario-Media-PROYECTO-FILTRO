@@ -36,7 +36,7 @@ const Login = () => {
                 setTimeout(() => {
                   setIsLoading(false);
                   setShowWelcomeUser(false); 
-                  //history("/indicadores");
+                  history("/indicadores");
               }, 5000);
             }).catch(err => {
                 console.log(err);

@@ -1,5 +1,5 @@
 import { Card, Col, Row } from "react-bootstrap";
-import Navbar from '../navbar/Navbar';
+//import Navbar from '../navbar/Navbar';
 import './styles/Reportes.css'
 import report from '../../assets/Report.png'
 import profile from '../../assets/Female Profile.png'
@@ -22,7 +22,6 @@ export default function Reportao() {
 
     return ( 
         <div>
-  <Navbar/>
 
   <div className='container-main'>
         <div className="informacion">
