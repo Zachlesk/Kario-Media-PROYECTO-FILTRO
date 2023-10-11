@@ -5,11 +5,11 @@ import jwt from "jsonwebtoken";
 const indicadores = db.collection('indicadores');
 const usuarioCollection = db.collection('usuarios');
 
-export const getIndicadores = async (req, res)=> {
+export const getIndicadores = async (req, res) => {
     try {
         const token = req.header("token");
-        if(!token){
-            return res.json({msg:"ingrese un token valido"})
+        if (!token) {
+            return res.json({ msg: "ingrese un token valido" })
         }
         let uid;
         try {
@@ -21,7 +21,7 @@ export const getIndicadores = async (req, res)=> {
         const usuarioValido = await usuarioCollection.findOne({ _id: new ObjectId(uid) });
         if (!usuarioValido) {
             return res.json({ msg: "usuario no validado" })
-        } 
+        }
         const indicador = await indicadores.aggregate([{
             $lookup: {
                 from: "usuarios",
@@ -37,11 +37,11 @@ export const getIndicadores = async (req, res)=> {
     }
 }
 
-export const getIndicador = async (req, res)=>{
+export const getIndicador = async (req, res) => {
     try {
         const token = req.header("token");
-        if(!token){
-            return res.json({msg:"ingrese un token valido"})
+        if (!token) {
+            return res.json({ msg: "ingrese un token valido" })
         }
         let uid;
         try {
@@ -53,21 +53,21 @@ export const getIndicador = async (req, res)=>{
         const usuarioValido = await usuarioCollection.findOne({ _id: new ObjectId(uid) });
         if (!usuarioValido) {
             return res.json({ msg: "usuario no validado" })
-        } 
+        }
         const objectIdParams = req.params.id;
         const objectID = new ObjectId(objectIdParams);
-        const indicador = await indicadores.findOne({_id: objectID});
+        const indicador = await indicadores.findOne({ _id: objectID });
         res.json(indicador)
     } catch (error) {
         console.error(error)
     }
 }
 
-export const postIndicador = async (req, res)=>{
+export const postIndicador = async (req, res) => {
     try {
         const token = req.header("token");
-        if(!token){
-            return res.json({msg:"ingrese un token valido"})
+        if (!token) {
+            return res.json({ msg: "ingrese un token valido" })
         }
         let uid;
         try {
@@ -79,25 +79,28 @@ export const postIndicador = async (req, res)=>{
         const usuarioValido = await usuarioCollection.findOne({ _id: new ObjectId(uid) });
         if (!usuarioValido) {
             return res.json({ msg: "usuario no validado" })
-        } 
-        const { indicador, 
-            descripcion, 
+        }
+
+
+
+        const { indicador,
+            descripcion,
             usuario,
-            categoria, 
-            fecha_de_inicio, 
-            fecha_de_terminacion, 
-            formula, 
-            frecuencia, 
-            cumplimiento, 
+            categoria,
+            fecha_de_inicio,
+            fecha_de_terminacion,
+            formula,
+            frecuencia,
+            cumplimiento,
             area } = req.body
 
         const usuarioObjectId = new ObjectId(usuario);
 
         const data = {
             indicador,
-            descripcion, 
+            descripcion,
             usuario: usuarioObjectId,
-            categoria, 
+            categoria,
             fecha_de_inicio,
             fecha_de_terminacion,
             formula,
@@ -113,11 +116,11 @@ export const postIndicador = async (req, res)=>{
 
 }
 
-export const deleteIndicador = async (req, res)=>{
+export const deleteIndicador = async (req, res) => {
     try {
         const token = req.header("token");
-        if(!token){
-            return res.json({msg:"ingrese un token valido"})
+        if (!token) {
+            return res.json({ msg: "ingrese un token valido" })
         }
         let uid;
         try {
@@ -129,21 +132,21 @@ export const deleteIndicador = async (req, res)=>{
         const usuarioValido = await usuarioCollection.findOne({ _id: new ObjectId(uid) });
         if (!usuarioValido) {
             return res.json({ msg: "usuario no validado" })
-        } 
+        }
         const objectIdParams = req.params.id;
         const objectID = new ObjectId(objectIdParams);
-        const indicador = await indicadores.deleteOne({_id:objectID});
+        const indicador = await indicadores.deleteOne({ _id: objectID });
         res.json(indicador)
     } catch (error) {
         console.error(error)
     }
 }
 
-export const putIndicador = async(req, res)=>{
+export const putIndicador = async (req, res) => {
     try {
         const token = req.header("token");
-        if(!token){
-            return res.json({msg:"ingrese un token valido"})
+        if (!token) {
+            return res.json({ msg: "ingrese un token valido" })
         }
         let uid;
         try {
@@ -155,28 +158,28 @@ export const putIndicador = async(req, res)=>{
         const usuarioValido = await usuarioCollection.findOne({ _id: new ObjectId(uid) });
         if (!usuarioValido) {
             return res.json({ msg: "usuario no validado" })
-        } 
+        }
         const objectIdParams = req.params.id;
         const objectID = new ObjectId(objectIdParams);
 
-        const { indicador, 
-            descripcion, 
+        const { indicador,
+            descripcion,
             usuario,
-            categoria, 
-            fecha_de_inicio, 
-            fecha_de_terminacion, 
-            formula, 
-            frecuencia, 
-            cumplimiento, 
+            categoria,
+            fecha_de_inicio,
+            fecha_de_terminacion,
+            formula,
+            frecuencia,
+            cumplimiento,
             area } = req.body
 
         const usuarioObjectId = new ObjectId(usuario);
 
         const data = {
             indicador,
-            descripcion, 
+            descripcion,
             usuario: usuarioObjectId,
-            categoria, 
+            categoria,
             fecha_de_inicio,
             fecha_de_terminacion,
             formula,
@@ -185,8 +188,8 @@ export const putIndicador = async(req, res)=>{
             area
         }
         const indicadors = await indicadores.updateOne(
-            {_id:objectID},
-            { $set: data}
+            { _id: objectID },
+            { $set: data }
         );
         res.json(indicadors)
     } catch (error) {
