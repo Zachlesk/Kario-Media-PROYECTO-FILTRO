@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import Navbar from "../../components/NavBar/Navbar";
+import ModalUser from "../../components/ModalUser";
 
 const token = localStorage.getItem("token")
     const config = {
@@ -11,6 +13,16 @@ const token = localStorage.getItem("token")
     }
 
 export default function ReadReportes() {
+  
+   //mostrar boton eliminar
+   const [botonDelete, setBotonDelete] = useState(false);
+
+   //bootstrap para perfil
+   const [show, setShow] = useState(false);
+   const handleClose = () => setShow(false);
+   const handleShow = () => setShow(true);
+
+   //data de la api
   const [APIData, setAPIData] = useState([]);
 
   useEffect(() => {
@@ -59,6 +71,9 @@ export default function ReadReportes() {
   };
   return (
     <div>
+      <Navbar handleShow={handleShow} botonDelete={botonDelete} setBotonDelete={setBotonDelete} />
+
+
       <Link to="/createReporte">
         <Button> crear nuevo reporte </Button>
       </Link>
@@ -101,6 +116,10 @@ export default function ReadReportes() {
           })}
         </Table.Body>
       </Table>
+
+            {/* modal de usuario */}
+      <ModalUser handleClose={handleClose} show={show} />
+
     </div>
   );
 }

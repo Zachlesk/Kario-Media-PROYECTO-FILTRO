@@ -1,23 +1,18 @@
-body {
-     background: linear-gradient(to bottom, #ffffff 50%, #f0f0f0 51%, #ffffff 100%);
- }
+@font-face {
+    font-family: 'Myriad';
+    src: url('./fonts/Myriad.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .barra{
+   display: flex;
+   justify-content: center;
+   gap: 10rem;
+   margin: 1rem;
+  }
  
- @font-face {
-   font-family: 'Myriad';
-   src: url('./fonts/Myriad.otf') format('truetype');
-   font-weight: normal;
-   font-style: normal;
- }
- .barra{
-  display: flex;
-  justify-content: center;
-  gap: 10rem;
-  margin: 1rem;
- }
-
-.boton-barra{
-  background-color: orange;
-  padding: 1rem;
-
-}
+ .boton-barra{
+   background-color: orange;
+   padding: 1rem;
  
+ }
