@@ -1,0 +1,72 @@
+.container-main {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+thead {
+    margin: 30px 40px 40px 40px;
+}
+
+.table {
+    width: 90%;
+    margin: 40px 80px 40px 80px;
+    border-collapse: separate;
+    border-spacing: 0 20px
+
+}
+
+th {
+    border: none;
+    font-size: 14px;
+}
+
+.text {
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+.render {
+
+}
+
+tbody {
+    margin-top: 60px;
+}
+
+.botonsito {
+    width: 200px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #FF6F2C;
+    border: #FF6F2C;
+    color: white;
+    font-weight: lighter;
+}
+
+
+button {
+    margin: auto;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 520px;
+    height: 100%;
+    right: 0px;
+  }
+  .modal-content {
+    height: 100%;
+  }
