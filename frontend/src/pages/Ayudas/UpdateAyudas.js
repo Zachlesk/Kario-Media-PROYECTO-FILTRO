@@ -157,7 +157,7 @@ const UpdateAyudas = ({ show, handleClose }) => {
                 </Button>
             </Modal.Footer>
         </Modal>
-    </div>
+        </div>
     )
   }
   
