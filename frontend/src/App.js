@@ -8,6 +8,7 @@ import Login from './pages/Login/Login';
 import ReadIndicadores from './pages/Indicadores/ReadIndicadores';
 import CreateIndicador from './pages/Indicadores/CreateIndicador';
 import UpdateIndicador from './pages/Indicadores/UpdateIndicador';
+import ReadAyudas from './pages/Ayudas/ReadAyudas';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/createIndicador" element={<CreateIndicador />}/>
         <Route path="/updateIndicador" element={<UpdateIndicador />}/>
 
+        <Route path="/ayudas" element={<ReadAyudas />}/>
 
       </Routes>
     </BrowserRouter>

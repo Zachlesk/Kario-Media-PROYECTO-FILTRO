@@ -21,14 +21,3 @@ body {
 
 }
  
-
-.modal-dialog {
-  position: fixed;
-  margin: auto;
-  width: 520px;
-  height: 100%;
-  right: 0px;
-}
-.modal-content {
-  height: 100%;
-}
