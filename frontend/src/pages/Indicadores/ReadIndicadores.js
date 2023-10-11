@@ -1,21 +1,27 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button } from "semantic-ui-react";
-import { Link } from "react-router-dom";
-import { Table } from "react-bootstrap";
-import BotonModal from "../../components/BotonModal";
-import ModalUser from "../../components/ModalUser";
 
+//assets
 import logo from "../../assets/logo.png"
 import green from '../../assets/Circled Notch-Green.png'
+
+//componentes
 import Navbar from '../../components/NavBar/Navbar';
+import ModalUser from "../../components/ModalUser";
+
+
+//estilos
 import "./Indicadores.css"
-
-import UpdateIndicador from "./UpdateIndicador";
-import CreateIndicador from "./CreateIndicador";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Table } from "react-bootstrap";
+import { useNavigate } from "react-router";
+
+//rutas (deprecated jijiji)
+//import UpdateIndicador from "./UpdateIndicador";
+//import CreateIndicador from "./CreateIndicador";
 
 
+//tomar token y config para el header
 const token = localStorage.getItem("token");
 const config = {
   headers: {
@@ -23,8 +29,12 @@ const config = {
   },
 };
 
+
 export default function ReadIndicadores() {
 
+  //useState
+
+  //mostrar boton eliminar
   const [botonDelete, setBotonDelete] = useState(false);
 
   //bootstrap para perfil
@@ -32,26 +42,37 @@ export default function ReadIndicadores() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [showModal, setShowModal] = useState(false);
-  const [showModalPost, setShowModalPost] = useState(false);
-
-  const handleCloseModal = () => setShowModal(false);
-  const handleShowModal = () => setShowModal(true);
-
-  const handleClosePost = () => setShowModalPost(false);
-  const handleShowPost = () => setShowModalPost(true);
-
-
-
+  //data de la api
   const [APIData, setAPIData] = useState([]);
+    
+  //useNavigate
+  const history = useNavigate()
+
 
   useEffect(() => {
+
+    //token
+    const token = localStorage.getItem("token");
+
+    //si no hay token
+    if(!token){
+     history("/login")
+    }
+
+    const config = {
+      headers: {
+        token: token,
+      },
+    };
+
     axios
       .get("http://localhost:8020/indicadores/all", config)
       .then((response) => {
         console.log(response.data);
         setAPIData(response.data);
-      });
+      }).catch((err)=>{
+        history("/login")
+      })
   }, []);
 
   const setData = (data) => {
@@ -100,51 +121,8 @@ export default function ReadIndicadores() {
   };
   return (
     <div>
+
       <Navbar handleShow={handleShow} botonDelete={botonDelete} setBotonDelete={setBotonDelete} />
-
-      <div className="barra">
-        <div>
-          <Button className="btn btn-warning btn-round add" onClick={handleShowPost}>
-            Crear
-          </Button>
-          {showModalPost && <CreateIndicador show={showModalPost} handleClosePost={handleClosePost} />}
-        </div>
-
-        <Button
-          className="boton-barra"
-          onClick={() => window.location.reload(true)}
-        >
-          Refrescar
-        </Button>
-
-        <div>
-          <Button
-            className="boton-barra"
-            onClick={() => {
-              if (botonDelete) {
-                setBotonDelete(false);
-              } else {
-                setBotonDelete(true)
-              }
-            }}
-          >
-            borrar
-          </Button>
-        </div>
-
-        <div>logo</div>
-
-        <div>
-          <Link to="/reportes">reportar</Link>
-        </div>
-
-        <div>ayuda</div>
-
-        <div>
-          <BotonModal handleShow={handleShow} />
-        </div>
-
-      </div>
 
       <div className='container-main'>
         <img src={logo} alt='logo' width={30} style={{ marginTop: 30 }}></img>
@@ -236,56 +214,6 @@ export default function ReadIndicadores() {
             })}
 
           </tbody>
-
-          <Table.Body>
-
-      <Table singleLine>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>indicador</Table.HeaderCell>
-            <Table.HeaderCell>descripcion </Table.HeaderCell>
-            <Table.HeaderCell>categoria</Table.HeaderCell>
-            <Table.HeaderCell>fecha_de_inicio</Table.HeaderCell>
-            <Table.HeaderCell>fecha_de_terminacion</Table.HeaderCell>
-            <Table.HeaderCell>formula</Table.HeaderCell>
-            <Table.HeaderCell>frecuencia</Table.HeaderCell>
-            <Table.HeaderCell>cumplimiento</Table.HeaderCell>
-            <Table.HeaderCell>area</Table.HeaderCell>
-
-            <Table.HeaderCell>Actualizar</Table.HeaderCell>
-            {botonDelete ? (<Table.HeaderCell>Eliminar</Table.HeaderCell>) : null}
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-
-          {APIData.map((data) => {
-            return (
-              <Table.Row>
-                <Table.Cell>{data.indicador}</Table.Cell>
-                <Table.Cell>{data.descripcion}</Table.Cell>
-                <Table.Cell>{data.categoria}</Table.Cell>
-                <Table.Cell>{data.fecha_de_inicio}</Table.Cell>
-                <Table.Cell>{data.fecha_de_terminacion}</Table.Cell>
-                <Table.Cell>{data.formula}</Table.Cell>
-                <Table.Cell>{data.frecuencia}</Table.Cell>
-                <Table.Cell>{data.cumplimiento}</Table.Cell>
-                <Table.Cell>{data.area}</Table.Cell>
-                <Table.Cell>
-                  <Button
-                    className="btn btn-warning"
-                    onClick={() => { handleShowModal(); setData(data); }}
-                  >
-                    Editar
-                  </Button>
-                  {showModal && <UpdateIndicador show={showModal} handleClose={handleCloseModal} />}
-                </Table.Cell>
-
-                {botonDelete ? (<Table.Cell> <Button onClick={() => onDelete(data._id)}>Eliminar</Button> </Table.Cell>) : null}
-
-              </Table.Row>
-            );
-          })}
-        </Table.Body>
         </Table>
       </div>
       <button className='botonsito'> ¿A dónde quieres ir? </button>
@@ -294,5 +222,6 @@ export default function ReadIndicadores() {
       <ModalUser handleClose={handleClose} show={show} />
 
     </div>
+
   );
 }
