@@ -3,10 +3,13 @@ import React, { useEffect, useState } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import report from '../../assets/Report.png'
 import profile from '../../assets/Female Profile.png'
+import { Table, Button } from "semantic-ui-react";
 //import { Link } from "react-router-dom";
 import Navbar from "../../components/NavBar/Navbar";
 import ModalUser from "../../components/ModalUser";
 import './Reportes.css'
+
+import CreateReportes from "./CreateReportes";
 import { Link, useNavigate } from "react-router-dom";
 
 
@@ -20,7 +23,14 @@ const config = {
 
 
 export default function ReadReportes() {
+
+  const [showModalPost, setShowModal] = useState(false);
+  const handleClosePost = () => setShowModal(false);
+  const handleShowPost = () => setShowModal(true);
+
+=======
 const history = useNavigate()
+
   //estilo rueda
   const [isChecked, setIsChecked] = useState(false);
 
@@ -111,10 +121,10 @@ const history = useNavigate()
         <div className="informacion">
           <div className="title">
             <h3> <img src={report} width={30} alt='Imagen de add' style={{ marginRight: '20px' }} />  Reportes del sistema </h3>
-            <Link to="/createReporte">
-              <button className='botonsito'> Añadir reporte </button>
-            </Link>
-
+            <Button className="btn btn-warning btn-round add" onClick={handleShowPost}>
+              Crear
+            </Button>
+            {showModalPost && <CreateReportes show={showModalPost} handleClosePost={handleClosePost} />}
           </div>
           <div className="description">
             <h5> Información detallada sobre los reportes del sistema. En esta sección encontrarás reportes del sistema web, reportes de indicadores y/o desaprobar una gestión.  </h5>

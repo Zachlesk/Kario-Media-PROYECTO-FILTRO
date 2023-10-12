@@ -77,7 +77,7 @@ const CreateIndicador = ({ show, handleClosePost }) => {
       <div>
         <Modal show={show} onHide={handleClosePost} className="custom-modal">
           <Modal.Header className="b">
-            <Modal.Title> ¡Agrega una nuevo alimento! 🌸 </Modal.Title>
+            <Modal.Title> ¡Agrega un nuevo indicador! </Modal.Title>
           </Modal.Header>
           <Modal.Body className="a">
             <div>
@@ -100,14 +100,13 @@ const CreateIndicador = ({ show, handleClosePost }) => {
 
             <div>
               <label> seleccione usuario </label>
-              <select name="usuarios">
+              <select name="usuarios" onClick={(e) => set_usuario(e.target.value)}>
                 <option> seleccione usuario nuevo</option>
                 {allUsuarios.map((data, i) => {
                   return (
                     <option
                       key={i}
                       value={data._id}
-                      onClick={(e) => set_usuario(e.target.value)}
                     >
                       {" "}
                       {data.nombre}{" "}
