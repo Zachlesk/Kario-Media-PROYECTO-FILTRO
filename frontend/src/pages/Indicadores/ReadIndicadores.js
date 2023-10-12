@@ -13,7 +13,7 @@ import ModalUser from "../../components/ModalUser";
 //estilos
 import "./Indicadores.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import { useNavigate } from "react-router";
 
 //rutas (deprecated jijiji)
@@ -52,19 +52,21 @@ export default function ReadIndicadores() {
   const history = useNavigate();
 
   useEffect(() => {
+
     //token
     const token = localStorage.getItem("token");
-
-    //si no hay token
-    if (!token) {
-      history("/login");
-    }
 
     const config = {
       headers: {
         token: token,
       },
     };
+
+    //si no hay token
+    if (!token) {
+      history("/");
+    }
+
 
     axios
       .get("http://localhost:8020/indicadores/all", config)
@@ -73,7 +75,7 @@ export default function ReadIndicadores() {
         setAPIData(response.data);
       })
       .catch((err) => {
-        history("/login");
+        history("/")
       });
   }, []);
 
@@ -123,21 +125,99 @@ export default function ReadIndicadores() {
   };
   return (
     <div>
-      <Navbar
+      {/* <Navbar
         handleShow={handleShow}
         botonDelete={botonDelete}
         setBotonDelete={setBotonDelete}
-      />
+      /> */}
 
-      <div className="container-main">
+     <div className="container-main">
         <img src={logo} alt="logo" width={30} style={{ marginTop: 30 }}></img>
+
+        <Navbar handleShow={handleShow}
+          botonDelete={botonDelete}
+          setBotonDelete={setBotonDelete}
+          handleShowPost={handleShowPost}
+          show={showModalPost}
+          handleClosePost={handleClosePost}
+        />
+
+        <div className='container-main'>
+          <img src={logo} alt='logo' width={30} style={{ marginTop: 30 }}></img>
+          <h3> Panel de indicadores </h3>
+          <h5>
+            Aqui puedes visualizar los indicadores propuestos y añadidos por tu
+            equipo de trabajo, Si quieres ver más detalles, dale click a uno de
+            ellos para más información.
+          </h5>
+        </div>
+
+        <div className="table-container">
+          <Table>
+            <thead>
+              <tr>
+                <th> Indicador </th>
+                <th> Descripcion </th>
+                <th> Categoría </th>
+                <th> Fecha de inicio </th>
+                <th> Fecha de terminación </th>
+                <th> Formula </th>
+                <th> Frecuencia </th>
+                <th> Cumplimiento </th>
+                <th> Área </th>
+                <th> Actualizar </th>
+                {botonDelete ? <th>Eliminar</th> : null}
+              </tr>
+            </thead>
+            <tbody>
+              {APIData.map((data) => {
+                return (
+                  <tr className="render">
+                    <td>
+                      <div className="text">
+                        <b> {data.indicador} </b>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="text">
+                        <b> {data.descripcion} </b>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="text">
+                        <b> {data.categoria} </b>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="text">
+                        <b> {data.fecha_de_inicio} </b>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="text">
+                        <b> {data.fecha_de_terminacion} </b>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="text">
+                        <b> {data.formula} </b>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="text">
+                        <b> {data.frecuencia} </b>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="text">
+                        <b>
+
       <Navbar handleShow={handleShow} 
               botonDelete={botonDelete} 
               setBotonDelete={setBotonDelete} 
               handleShowPost={handleShowPost}
               show={showModalPost}
               handleClosePost={handleClosePost}
-      />
 
       <div className='container-main'>
         <img src={logo} alt='logo' width={30} style={{ marginTop: 30 }}></img>
@@ -149,66 +229,7 @@ export default function ReadIndicadores() {
         </h5>
       </div>
 
-      <div className="table-container">
-        <Table>
-          <thead>
-            <tr>
-              <th> Indicador </th>
-              <th> Descripcion </th>
-              <th> Categoría </th>
-              <th> Fecha de inicio </th>
-              <th> Fecha de terminación </th>
-              <th> Formula </th>
-              <th> Frecuencia </th>
-              <th> Cumplimiento </th>
-              <th> Área </th>
-              <th> Actualizar </th>
-              {botonDelete ? <th>Eliminar</th> : null}
-            </tr>
-          </thead>
-          <tbody>
-            {APIData.map((data) => {
-              return (
-                <tr className="render">
-                  <td>
-                    <div className="text">
-                      <b> {data.indicador} </b>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="text">
-                      <b> {data.descripcion} </b>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="text">
-                      <b> {data.categoria} </b>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="text">
-                      <b> {data.fecha_de_inicio} </b>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="text">
-                      <b> {data.fecha_de_terminacion} </b>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="text">
-                      <b> {data.formula} </b>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="text">
-                      <b> {data.frecuencia} </b>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="text">
-                      <b>
-                        
+
                           <CircularProgress
                             value={data.cumplimiento}
                             color={
@@ -216,51 +237,54 @@ export default function ReadIndicadores() {
                                 ? "red"
                                 : data.cumplimiento >= 50 &&
                                   data.cumplimiento < 80
-                                ? "orange"
-                                : data.cumplimiento >= 80
-                                ? "green"
-                                : ""
+                                  ? "orange"
+                                  : data.cumplimiento >= 80
+                                    ? "green"
+                                    : ""
                             }
                           >
                             <CircularProgressLabel>{data.cumplimiento}%</CircularProgressLabel>
                           </CircularProgress>
-                        
-                      </b>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="text">
-                      <b> {data.area} </b>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="text">
-                      <i class="fa fa-bars" aria-hidden="true"></i>
-                    </div>
-                  </td>
-                  <td>
-                    {botonDelete ? (
-                      <td>
-                        <div
-                          className="text"
-                          onClick={() => onDelete(data._id)}
-                        >
-                          <b> delete </b>
-                        </div>
-                      </td>
-                    ) : null}
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </Table>
+
+                        </b>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="text">
+                        <b> {data.area} </b>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="text">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                      </div>
+                    </td>
+                    <td>
+                      {botonDelete ? (
+                        <td>
+                          <div>
+                            <Button type="submit" onClick={() => onDelete(data._id)}>
+                              delete
+                            </Button>
+                          </div>
+                        </td>
+                      ) : null}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
+        </div>
+        <button className="botonsito"> ¿A dónde quieres ir? </button>
+
+        {/* modal de usuario */}
+        <ModalUser handleClose={handleClose} show={show} />
       </div>
-      <button className="botonsito"> ¿A dónde quieres ir? </button>
 
       {/* modal de usuario */}
       <ModalUser handleClose={handleClose} show={show} />
-    </div>
+
     </div>
   );
 }

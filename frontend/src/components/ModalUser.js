@@ -19,6 +19,14 @@ const ModalUser = ({ handleClose, show }) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
+
+        const token = localStorage.getItem("token");
+        const config = {
+          headers: {
+            token: token,
+          },
+        };
+
         const base64Url = token.split(".")[1];
         const base64 = base64Url.replace("-", "+").replace("_", "/");
         const userData = JSON.parse(window.atob(base64));
