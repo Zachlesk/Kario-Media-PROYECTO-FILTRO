@@ -34,6 +34,7 @@ function App() {
           <Route path="/updateIndicador" element={<UpdateIndicador />} />
 
           <Route path="/ayudas" element={<ReadAyudas />} />
+
         </Routes>
       </BrowserRouter>
     </ChakraProvider>

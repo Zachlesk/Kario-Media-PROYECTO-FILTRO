@@ -44,7 +44,7 @@ export default function Navbar({handleShow,botonDelete,setBotonDelete, handleSho
       </h5>
 
       <div className='mr-auto'>
-        <Link to="/" className="navbar-brand">
+        <Link to="/indicadores" className="navbar-brand">
         <img src={logo} alt="Mariposa" className="mariposa" width="26" />
       </Link>
       </div>
