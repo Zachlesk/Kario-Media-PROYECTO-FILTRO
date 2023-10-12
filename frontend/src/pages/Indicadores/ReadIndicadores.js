@@ -52,19 +52,21 @@ export default function ReadIndicadores() {
   const history = useNavigate();
 
   useEffect(() => {
+
     //token
     const token = localStorage.getItem("token");
-
-    //si no hay token
-    if (!token) {
-      history("/login");
-    }
 
     const config = {
       headers: {
         token: token,
       },
     };
+
+    //si no hay token
+    if (!token) {
+      history("/");
+    }
+
 
     axios
       .get("http://localhost:8020/indicadores/all", config)
@@ -73,7 +75,7 @@ export default function ReadIndicadores() {
         setAPIData(response.data);
       })
       .catch((err) => {
-        history("/login");
+        history("/")
       });
   }, []);
 
@@ -129,7 +131,7 @@ export default function ReadIndicadores() {
         setBotonDelete={setBotonDelete}
       />
 
-      <div className="container-main">
+     {/*  <div className="container-main">
         <img src={logo} alt="logo" width={30} style={{ marginTop: 30 }}></img>
       <Navbar handleShow={handleShow} 
               botonDelete={botonDelete} 
@@ -138,7 +140,7 @@ export default function ReadIndicadores() {
               show={showModalPost}
               handleClosePost={handleClosePost}
       />
-
+ */}
       <div className='container-main'>
         <img src={logo} alt='logo' width={30} style={{ marginTop: 30 }}></img>
         <h3> Panel de indicadores </h3>
@@ -260,7 +262,6 @@ export default function ReadIndicadores() {
 
       {/* modal de usuario */}
       <ModalUser handleClose={handleClose} show={show} />
-    </div>
     </div>
   );
 }

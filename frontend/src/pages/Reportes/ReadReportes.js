@@ -7,7 +7,7 @@ import profile from '../../assets/Female Profile.png'
 import Navbar from "../../components/NavBar/Navbar";
 import ModalUser from "../../components/ModalUser";
 import './Reportes.css'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const token = localStorage.getItem("token")
@@ -20,7 +20,7 @@ const config = {
 
 
 export default function ReadReportes() {
-
+const history = useNavigate()
   //estilo rueda
   const [isChecked, setIsChecked] = useState(false);
 
@@ -45,10 +45,24 @@ export default function ReadReportes() {
   const [APIData, setAPIData] = useState([]);
 
   useEffect(() => {
+    const token = localStorage.getItem("token")
+    const config = {
+      headers: {
+        token: token
+      },
+    }
+
+    //si no hay token
+    if (!token) {
+      history("/");
+    }
+
     axios.get("http://localhost:8020/reportes/all", config)
       .then((response) => {
         console.log(response.data);
         setAPIData(response.data);
+      }).catch(()=>{
+        history("/");
       });
   }, []);
 

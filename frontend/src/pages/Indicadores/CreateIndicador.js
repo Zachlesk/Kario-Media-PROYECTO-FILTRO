@@ -31,18 +31,20 @@ const CreateIndicador = ({ show, handleClosePost }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const allUsers = await axios.get(
-          "http://localhost:8020/usuarios/all",
-          config
-        );
-        setAllUsuarios(allUsers.data);
+        const allUsers = await axios.get("http://localhost:8020/usuarios/all", config);
+        if (Array.isArray(allUsers.data)) {
+          setAllUsuarios(allUsers.data);
+        } else {
+          console.error("La respuesta de la API no es un array:", allUsers.data);
+        }
       } catch (error) {
-        console.error(error);
+        console.error("Error al obtener datos de usuario:", error);
       }
     };
-
+  
     fetchData();
   }, []);
+  
 
   const postData = () => {
     axios
