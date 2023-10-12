@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Modal from 'react-bootstrap/Modal';
+import help from '../../assets/Help.png';
+import './CreateAyudas.css'
 
 const token = localStorage.getItem("token")
 const config = {
@@ -25,8 +27,42 @@ const CreateAyudas = ({ show, handleClosePost }) => {
     const [motivo_ayuda, set_motivo_ayuda] = useState("");
     const [estado, set_estado] = useState("");
 
-    const [allUsuarios, setAllUsuarios] = useState([]);
     const [allIndicadores, setAllIndicadores] = useState([]);
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+    
+    
+            const base64Url = token.split(".")[1];
+            const base64 = base64Url.replace("-", "+").replace("_", "/");
+            const userData = JSON.parse(window.atob(base64));
+    
+            const response = await axios.get(
+              `http://localhost:8020/usuarios/one/${userData.uid}`,
+              config
+            );
+    
+            console.log(response.data);
+            set_usuario(response.data._id);
+    
+            const allIndicadores = await axios.get("http://localhost:8020/indicadores/all", config);
+            setAllIndicadores(allIndicadores.data);
+          } catch (error) {
+            console.error(error);
+          }
+    
+        };
+          
+    
+        fetchData();
+      }, [])
+    
+      const handleClick = () => {
+        window.location.reload(true);
+        postData(); 
+      }
 
     const postData = () => {
         axios
@@ -52,21 +88,12 @@ const CreateAyudas = ({ show, handleClosePost }) => {
         <>
             <div>
                 <Modal show={show} onHide={handleClosePost} className="custom-modal">
-
-                    <Modal.Header className='b'>
-                        <Modal.Title> ¡Agrega alimento </Modal.Title>
-                    </Modal.Header>
                     <Modal.Body className='a'>
-                        <label> seleccione usuario </label>
-                        <select name="usuarios" onClick={(e) => set_usuario(e.target.value)}>
-                            <option> seleccione usuario nuevo</option>
-                            {allUsuarios.map((data, i) => {
-                                return (
-                                    <option key={i} value={data._id}> {data.nombre} </option>
-                                )
-                            })}
-                        </select>
+                    <img src={help} width={30} height={30} alt='Imagen de add' />
+            <h1 style={{marginLeft: 30}}> Agregar nueva ayuda </h1>
 
+
+                        <div className="ol">
                         <label> seleccione indicador </label>
                         <select name="indicador" onClick={(e) => set_indicador_de_ayuda(e.target.value)}>
                             <option> seleccione indicador</option>
@@ -76,64 +103,70 @@ const CreateAyudas = ({ show, handleClosePost }) => {
                                 )
                             })}
                         </select>
+                        </div>
 
-                        <label>titulo ayuda</label>
+
+                        <div className="ol">
+                        <label>Titulo de ayuda:</label>
                         <input
-                            placeholder="titulo ayuda"
+                            placeholder="Titulo de ayuda"
                             value={titulo_ayuda}
                             onChange={(e) => set_titulo_ayuda(e.target.value)}
                         ></input>
+                        </div>
 
-                        <label>fecha ayuda</label>
+                        <div className="ol">
+                        <label>Fecha de registro de ayuda:</label>
                         <input
-                            placeholder="fecha ayuda"
+                            type="date"
                             value={fecha_ayuda}
                             onChange={(e) => set_fecha_ayuda(e.target.value)}
                         ></input>
+                        </div>
 
-                        <label>area asignada</label>
+                        <div className="ol">
+                        <label> Area asignada:</label>
                         <input
-                            placeholder="resultado indicador"
+                            placeholder= "Area asignada a la gestión"
                             value={area_asignada}
                             onChange={(e) => set_area_asignada(e.target.value)}
                         ></input>
+                        </div>
 
-                        <label>prioridad</label>
+                        <div className="ol">
+                        <label>Prioridad:</label>
                         <input
-                            placeholder="prioridad"
+                            placeholder="Nivel de prioridad"
                             value={prioridad}
                             onChange={(e) => set_prioridad(e.target.value)}
                         ></input>
+                        </div>
 
-                        <label>motivo ayuda</label>
+                        <div className="ol">
+                        <label>Motivo de ayuda</label>
                         <input
-                            placeholder="motivo_ayuda"
+                            placeholder="Motivo de la ayuda "
                             value={motivo_ayuda}
                             onChange={(e) => set_motivo_ayuda(e.target.value)}
                         ></input>
+                        </div>
 
-                        <label>estado</label>
+                        <div className="ol">
+                        <label> Estado</label>
                         <input
-                            placeholder="estado"
+                            placeholder="Estado de la ayuda"
                             value={estado}
                             onChange={(e) => set_estado(e.target.value)}
                         ></input>
-
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <div className="text-center ">
-                            Designed by: Zachlesk
-                            <a href="https://github.com/Zachlesk" className="text-white me-2 custom-icon" target="_blank" rel="noopener noreferrer">
-                                <i className="fa fa-github fa-2x"></i>
-                            </a>
                         </div>
-                        <Button type="submit" onClick={postData}>
-                            Agrega
+
+<Button type="submit" onClick={handleClick}>
+                            Agregar ayuda
                         </Button>
-                        <Button type="submit" variant="secondary" onClick={handleClosePost}>
-                            Cerrar
-                        </Button>
-                    </Modal.Footer>
+                    </Modal.Body>
+
+                
+
                 </Modal>
             </div>
         </>

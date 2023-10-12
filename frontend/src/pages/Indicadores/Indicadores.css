@@ -70,3 +70,23 @@ button {
   .modal-content {
     height: 100%;
   }
+
+  .table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table  {
+  border: 1px solid black;
+  border-radius: 40px;
+}
+
+th, td {
+  padding: 8px;
+  text-align: center;
+}
+

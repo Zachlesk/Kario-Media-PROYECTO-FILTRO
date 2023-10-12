@@ -57,11 +57,8 @@ const WelcomeUserComponent = () => {
         <div className="container-informacion">
           <h1>
             Bienvenido de nuevo
-
           </h1>
-          <h4>
-            <br /> <img src={userInfo.imagen} alt='imagen-usuario' width={100} style={{ borderRadius: 60 }}></img>
-          </h4>
+          <br /> <img src={userInfo.imagen} alt='imagen-usuario' width={100} style={{ borderRadius: 60 }}></img>
           <h2> {userInfo.nombre} </h2>
           <h6>
             {getRoleText()}

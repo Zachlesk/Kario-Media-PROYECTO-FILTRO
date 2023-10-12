@@ -102,11 +102,9 @@ export default function ReadReportes() {
       <div className='container-main'>
         <div className="informacion">
           <div className="title">
-            <h3> <img src={report} width={30} alt='Imagen de add' style={{ marginRight: '20px' }} />  Reportes del sistema </h3>
-            <Button className="btn btn-warning btn-round add" onClick={handleShowPost}>
-              Crear
-            </Button>
-            {showModalPost && <CreateReportes show={showModalPost} handleClosePost={handleClosePost} />}
+            <h3> <img src={report} width={30} alt='Imagen de add' style={{ marginRight: '20px' }} /> 
+            <h2> Reportes del sistema </h2>  </h3>
+              {showModalPost && <CreateReportes show={showModalPost} handleClosePost={handleClosePost} />} 
           </div>
           <div className="description">
             <h5> Información detallada sobre los reportes del sistema. En esta sección encontrarás reportes del sistema web, reportes de indicadores y/o desaprobar una gestión.  </h5>
@@ -115,7 +113,7 @@ export default function ReadReportes() {
         </div>
 
         <div className="reports">
-          <h3> Reportes registrados </h3>
+          <h2> Reportes registrados: </h2>
         </div>
 
         <div className="contenedor">

@@ -60,7 +60,7 @@ const ModalUser = ({ handleClose, show }) => {
 
       <Modal.Body>
         
-        <img src={logo} alt="Mariposa" className="logo" width="40" />
+        <img src={logo} alt="Mariposa" className="logo" width="40" style={{marginTop: 60}} />
         <br /> <h3 className="perfildeusuario"> Perfil de usuario </h3>
 
 
@@ -79,15 +79,17 @@ const ModalUser = ({ handleClose, show }) => {
         <h3> <b> Fecha de Registro: </b> {userInfo.fecha_registro} </h3>
 
         <Link to="/" onClick={() => localStorage.removeItem("token")}>
-          <i class="fa fa-sign-out" aria-hidden="true"></i>
+          <i class="fa fa-2x fa-sign-out" style={{marginTop: 20, color: "#FF721B"}} aria-hidden="true"></i>
         </Link>
 
         {userInfo.rol == "ADMIN" ? (
+          <div> 
+          <h4 style={{marginTop: 30}}> <b> Panel administrador: </b></h4>
           <Button onClick={handleShowPost}>
-            <p> <i class="fa fa-plus" aria-hidden="true"></i> AÑADIR USUARIO</p>
+            <p> <i class="fa fa-plus" aria-hidden="true"></i>  Añadir usuario </p>
             {showModalPost && <CreateUser show={showModalPost} handleClosePost={handleClosePost} />}
           </Button>
-          
+          </div>
         ) : null
         }
       </Modal.Body>

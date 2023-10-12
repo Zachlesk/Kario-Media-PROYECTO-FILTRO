@@ -253,7 +253,7 @@ export default function ReadIndicadores() {
             </tbody>
           </Table>
         </div>
-        <button className="botonsito"> ¿A dónde quieres ir? </button>
+        <button className="botonsito"> Añadir elementos </button>
 
         {/* modal de usuario */}
         <ModalUser handleClose={handleClose} show={show} />

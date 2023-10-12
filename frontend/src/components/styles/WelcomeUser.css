@@ -22,3 +22,14 @@ h2 {
 h1 {
     font-size: 22px;
 }
+
+.container-informacion {
+    flex-direction: column;
+    margin: auto;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}

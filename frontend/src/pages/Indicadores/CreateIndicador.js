@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
+import add from '../../assets/Add.png';
+import './CreateIndicador.css'
 
 const token = localStorage.getItem("token");
 const config = {
@@ -72,36 +74,40 @@ const CreateIndicador = ({ show, handleClosePost }) => {
       });
   };
 
+  const handleClick = () => {
+    window.location.reload(true);
+    postData(); 
+  }
+
   return (
     <>
       <div>
-        <Modal show={show} onHide={handleClosePost} className="custom-modal">
-          <Modal.Header className="b">
-            <Modal.Title> ¡Agrega un nuevo indicador! </Modal.Title>
-          </Modal.Header>
+        <Modal show={show} onHide={handleClosePost} className="custom-modal ">
           <Modal.Body className="a">
-            <div>
-              <label>titulo reporte</label>
+          <img src={add} width={30} height={30} alt='Imagen de add' />
+            <h1 style={{marginLeft: 30}}> Agregar nuevo indicador </h1>
+            <div className="ol">
+              <label> Titulo del reporte:   </label>
               <input
-                placeholder="indicador"
+                placeholder="Nombre de indicador"
                 value={indicador}
                 onChange={(e) => set_indicador(e.target.value)}
               ></input>
             </div>
 
-            <div>
-              <label>descripcion</label>
+            <div className="ol">
+              <label>Descripción:</label>
               <input
-                placeholder="descripcion"
+                placeholder="Descripción de indicador"
                 value={descripcion}
                 onChange={(e) => set_descripcion(e.target.value)}
               ></input>
             </div>
 
-            <div>
-              <label> seleccione usuario </label>
+            <div className="ol">
+              <label> Seleccione usuario: </label>
               <select name="usuarios" onClick={(e) => set_usuario(e.target.value)}>
-                <option> seleccione usuario nuevo</option>
+                <option> Usuarios </option>
                 {allUsuarios.map((data, i) => {
                   return (
                     <option
@@ -115,78 +121,79 @@ const CreateIndicador = ({ show, handleClosePost }) => {
               </select>
             </div>
 
-            <div>
-              <label>categoria</label>
+            <div className="ol">
+              <label>Categoria:</label>
               <input
-                placeholder="categoria"
+                placeholder="Categoria de clasificación"
                 value={categoria}
                 onChange={(e) => set_categoria(e.target.value)}
               ></input>
             </div>
 
-            <div>
-              <label>fecha de inicio</label>
+            <div className="ol">
+              <label>Fecha de inicio:</label>
+
               <input
-                placeholder="fecha de inicio"
+              type="date"
                 value={fecha_de_inicio}
                 onChange={(e) => set_fecha_de_inicio(e.target.value)}
               ></input>
             </div>
 
-            <div>
-              <label>fecha de terminacion</label>
+            <div className="ol">
+              <label>Fecha de terminación:</label>
               <input
+               type="date"
                 placeholder="fecha de terminacion"
                 value={fecha_de_terminacion}
                 onChange={(e) => set_fecha_de_terminacion(e.target.value)}
               ></input>
             </div>
 
-            <div>
-              <label>formula</label>
+            <div className="ol">
+              <label>Fórmula: </label>
+
               <input
-                placeholder="formula"
+                placeholder="Metodología de formula"
                 value={formula}
                 onChange={(e) => set_formula(e.target.value)}
               ></input>
             </div>
 
-            <div>
-              <label>frecuencia</label>
+            <div className="ol">
+              <label>Frecuencia:</label>
+
               <input
-                placeholder="frecuencia"
+                placeholder="Frecuencia de cumplimiento"
                 value={frecuencia}
                 onChange={(e) => set_frecuencia(e.target.value)}
               ></input>
             </div>
 
-            <div>
-              <label>cumplimiento</label>
+            <div className="ol">
+              <label>Cumplimiento</label>
+
               <input
-                placeholder="cumplimiento"
+                placeholder="Porcentaje de cumplimiento"
+                type="number"
                 value={cumplimiento}
                 onChange={(e) => set_cumplimiento(e.target.value)}
               ></input>
             </div>
 
-            <div>
-              <label>area</label>
+            <div className="ol">
+              <label>Área:</label>
+
               <input
-                placeholder="area"
+                placeholder="Área de desarrollo"
                 value={area}
                 onChange={(e) => set_area(e.target.value)}
               ></input>
             </div>
-          </Modal.Body>
-          <Modal.Footer>
-            <div className="text-center ">Designed by: Zachlesk</div>
-            <Button type="submit" onClick={postData}>
+            <Button type="submit" onClick={handleClick}>
               Agrega
             </Button>
-            <Button type="submit" variant="secondary" onClick={handleClosePost}>
-              Cerrar
-            </Button>
-          </Modal.Footer>
+          </Modal.Body>
         </Modal>
       </div>
     </>

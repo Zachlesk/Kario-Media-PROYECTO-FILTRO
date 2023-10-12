@@ -4,29 +4,29 @@ import { Table, Button } from "semantic-ui-react";
 import UpdateAyudas from "./UpdateAyudas";
 import CreateAyudas from "./CreateAyudas.js";
 
-import help from "../../assets/Help.png"
-import profile from '../../assets/Female Profile.png'
+import help from "../../assets/Help.png";
+import profile from "../../assets/Female Profile.png";
 import Navbar from "../../components/NavBar/Navbar";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './Ayudas.css'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Ayudas.css";
 import ModalUser from "../../components/ModalUser";
 import { useNavigate } from "react-router";
 
-const token = localStorage.getItem("token")
+const token = localStorage.getItem("token");
 const config = {
   headers: {
-    token: token
+    token: token,
   },
-}
+};
 
 export default function ReadAyudas() {
   const [APIData, setAPIData] = useState([]);
 
-   //MODALPOST
-   const [showModalPost, setShowModalPost] = useState(false);
-   const handleShowPost = () => setShowModalPost(true);
-   const handleClosePost = () => setShowModalPost(false);
+  //MODALPOST
+  const [showModalPost, setShowModalPost] = useState(false);
+  const handleShowPost = () => setShowModalPost(true);
+  const handleClosePost = () => setShowModalPost(false);
 
   const [botonDelete, setBotonDelete] = useState(false);
 
@@ -35,27 +35,28 @@ export default function ReadAyudas() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
-  const history = useNavigate()
+  const history = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token");
     const config = {
       headers: {
-        token: token
+        token: token,
       },
-    }
+    };
 
     //si no hay token
     if (!token) {
       history("/");
     }
 
-    axios.get("http://localhost:8020/ayudas/all", config)
+    axios
+      .get("http://localhost:8020/ayudas/all", config)
       .then((response) => {
         console.log(response.data);
         setAPIData(response.data);
-      }).catch(()=>{
+      })
+      .catch(() => {
         history("/");
       });
   }, []);
@@ -71,7 +72,7 @@ export default function ReadAyudas() {
       area_asignada,
       prioridad,
       motivo_ayuda,
-      estado
+      estado,
     } = data;
 
     localStorage.setItem("id", _id);
@@ -86,14 +87,14 @@ export default function ReadAyudas() {
   };
 
   const getData = () => {
-    axios.get("http://localhost:8020/ayudas/all", config)
-      .then((getData) => {
-        setAPIData(getData.data);
-      });
+    axios.get("http://localhost:8020/ayudas/all", config).then((getData) => {
+      setAPIData(getData.data);
+    });
   };
 
   const onDelete = (id) => {
-    axios.delete(`http://localhost:8020/ayudas/delete/${id}`, config)
+    axios
+      .delete(`http://localhost:8020/ayudas/delete/${id}`, config)
       .then(() => {
         getData();
       });
@@ -101,39 +102,57 @@ export default function ReadAyudas() {
 
   return (
     <div>
-
       <Navbar
         handleShow={handleShow}
         botonDelete={botonDelete}
         setBotonDelete={setBotonDelete}
-
         handleShowPost={handleShowPost}
       />
 
-
       <div className="information">
         <h1> Ayudas del sistema </h1>
-        <img src={help} width={40} alt='Imagen de ayuda' />
-        <h4> Módulo para inquietudes, dudas, solicitudes y ayudantías para los indicadores o sobre el sistema.  </h4>
-        <p> <button className='botonsano'> Añadir ayuda </button></p>
+        <img src={help} width={40} alt="Imagen de ayuda" />
+        <h4>
+          {" "}
+          Módulo para inquietudes, dudas, solicitudes y ayudantías para los
+          indicadores o sobre el sistema.{" "}
+        </h4>
+        {/* <p> <button className='botonsano'> Añadir ayuda </button></p> */}
       </div>
-
-
 
       {APIData.map((data) => {
         return (
           <div className="large-container">
-            <img src={data.detalleUsuario[0].imagen || profile} width={60} height={40} alt='ACÁ VA LA IMAGEN DEL SESION DE USUARIO ' />
-            <p>  {data.detalleUsuario[0].nombre}  </p>
-            <p> <b> {data.titulo_ayuda} </b>  </p>
-            <p> <button className='botonsano'> Detalles </button></p>
+            <img
+              src={data.detalleUsuario[0].imagen || profile}
+              style={{ borderRadius: 30 }}
+              width={60}
+              height={40}
+              alt="ACÁ VA LA IMAGEN DEL SESION DE USUARIO "
+            />
+            <p> {data.detalleUsuario[0].nombre} </p>
+            <p>
+              {" "}
+              <b> {data.titulo_ayuda} </b>{" "}
+            </p>
+
+            {botonDelete ? (
+              <td>
+                <div onClick={() => onDelete(data._id)}>
+                  <i
+                    class="fa fa-lg fa-times-circle"
+                    aria-hidden="true"
+                    style={{ color: "red" }}
+                  ></i>
+                </div>
+              </td>
+            ) : null}
           </div>
-        )
+        );
       })}
 
       {/* modal create */}
-     <CreateAyudas show={showModalPost} handleClosePost={handleClosePost} />
-
+      <CreateAyudas show={showModalPost} handleClosePost={handleClosePost} />
 
       {/* modal de usuario */}
       <ModalUser handleClose={handleClose} show={show} />

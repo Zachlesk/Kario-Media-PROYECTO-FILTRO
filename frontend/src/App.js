@@ -35,6 +35,9 @@ function App() {
 
           <Route path="/ayudas" element={<ReadAyudas />} />
 
+          <Route path="*" element={<Login />} />
+
+
         </Routes>
       </BrowserRouter>
     </ChakraProvider>

@@ -40,7 +40,7 @@ const CreateUser = ({ show, handleClosePost }) => {
                 activo
             }, config)
             .then(() => {
-                history("/ayudas")
+                window.location.reload();
             })
             .catch(err => {
                 console.log(err);
@@ -53,7 +53,7 @@ const CreateUser = ({ show, handleClosePost }) => {
                 <Modal show={show} onHide={handleClosePost} className="custom-modal">
 
                     <Modal.Header className='b'>
-                        <Modal.Title> ¡Agrega alimento </Modal.Title>
+                        <Modal.Title> ¡Agrega usuario! </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className='a'>
 
@@ -102,16 +102,16 @@ const CreateUser = ({ show, handleClosePost }) => {
 
                         <label>rol</label>
                         <select
-                            placeholder="rol"
                             value={rol}
                             onChange={(e) => set_rol(e.target.value)}>
+                            <option value="">Seleccionar Rol</option>
                             <option value="ADMIN">ADMIN</option>
                             <option value="USER">USER</option>
                         </select>
 
                         <label>fecha_registro</label>
                         <input
-                            type="fecha_registro"
+                            type="date"
                             placeholder="fecha_registro"
                             value={fecha_registro}
                             onChange={(e) => set_fecha_registro(e.target.value)}
@@ -126,7 +126,7 @@ const CreateUser = ({ show, handleClosePost }) => {
                             </a>
                         </div>
                         <Button type="submit" onClick={postData}>
-                            Agrega
+                            Agregar
                         </Button>
                         <Button type="submit" variant="secondary" onClick={handleClosePost}>
                             Cerrar

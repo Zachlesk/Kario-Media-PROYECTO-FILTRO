@@ -13,6 +13,7 @@ h5 {
 .info {
     margin: auto;
     display: flex;
+    align-items: center;
     align-content: space-between !important;
     left: 0;
     right: 0;
@@ -29,6 +30,9 @@ a {
 
 .mr-auto {
     margin: 10px 60px 2px 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 #settings {
@@ -39,3 +43,52 @@ a {
 .navbar {
     border-bottom: 1px solid #707070; 
 }
+
+.a {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Navbar.css */
+/* Estilos para el menú hamburguesa */
+.menu-button {
+    display: none;
+    cursor: pointer;
+  }
+  
+  .menu-open .menu-links {
+    display: block;
+  }
+  
+  .menu-links {
+    display: none;
+  }
+  
+  /* Estilos para pantallas pequeñas */
+  @media (max-width: 767px) {
+    .navbar {
+      flex-direction: column;
+    }
+    .info {
+      text-align: center;
+    }
+    .mr-auto {
+      margin: 10px 0;
+    }
+    h5 {
+      margin: 0;
+    }
+    #settings {
+      flex-direction: column;
+      align-items: center;
+    }
+    .menu-button {
+      display: block;
+      text-align: right;
+      padding: 10px;
+    }
+    .menu-open .menu-button {
+      text-align: right;
+    }
+  }
+  

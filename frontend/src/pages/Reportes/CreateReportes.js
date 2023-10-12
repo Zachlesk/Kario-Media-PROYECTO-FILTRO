@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Modal from 'react-bootstrap/Modal';
 import "./Reportes.css"
+import report from '../../assets/Report.png';
 
 
 
@@ -32,7 +33,10 @@ const CreateReportes = ({ show, handleClosePost }) => {
   const [allUsuarios, setAllUsuarios] = useState([]);
   const [allIndicadores, setAllIndicadores] = useState([]);
 
-
+  const handleClick = () => {
+    window.location.reload(true);
+    postData(); 
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -90,26 +94,15 @@ const CreateReportes = ({ show, handleClosePost }) => {
       <div>
         <Modal show={show} onHide={handleClosePost} className="custom-modal">
 
-          <Modal.Header className='b'>
-            <Modal.Title>¡Agrega un nuevo Reporte!</Modal.Title>
-          </Modal.Header>
           <Modal.Body className='a'>
-            <div>
-              <label> seleccione usuario </label>
-              <select name="usuarios" onClick={(e) => set_usuario(e.target.value)}>
-                <option> seleccione usuario nuevo</option>
-                {allUsuarios.map((data, i) => {
-                  return (
-                    <option key={i} value={data._id}> {data.nombre} </option>
-                  )
-                })}
-              </select>
-            </div>
+          <img src={report} width={30} height={30} alt='Imagen de add' />
+          <Modal.Title>¡Agrega un nuevo reporte!</Modal.Title>
+               
 
-            <div>
-              <label> seleccione indicador </label>
-              <select name="indicador" onClick={(e) => set_indicador_reportado(e.target.value)}>
-                <option> seleccione indicador</option>
+            <div className="ol">
+              <label> Seleccione indicador </label>
+              <br/><select name="indicador" onClick={(e) => set_indicador_reportado(e.target.value)}>
+                <option> Indicador </option>
                 {allIndicadores.map((data, i) => {
                   return (
                     <option key={i} value={data._id} > {data.indicador}  </option>
@@ -118,66 +111,57 @@ const CreateReportes = ({ show, handleClosePost }) => {
               </select>
             </div>
 
-            <div>
-              <label>titulo reporte</label>
+            <div className="ol">
+              <label>Titulo del reporte</label>
               <input
-                placeholder="titulo reporte"
+                placeholder="Titulo del reporte"
                 value={titulo_reporte}
                 onChange={(e) => set_titulo_reporte(e.target.value)}
               ></input>
             </div>
 
-            <div>
-              <label>fecha reporte</label>
+            <div className="ol">
+              <label>Fecha de reporte</label>
               <input
+              type="date"
                 placeholder="fecha reporte"
                 value={fecha_reporte}
                 onChange={(e) => set_fecha_reporte(e.target.value)}
               ></input>
             </div>
 
-            <div>
-              <label>resultado indicador</label>
+            <div className="ol">
+              <label>Resultado actual del indicador:</label>
               <input
-                placeholder="resultado indicador"
+                placeholder="Resultado de indicador"
                 value={resultado_indicador}
                 onChange={(e) => set_resultado_indicador(e.target.value)}
               ></input>
             </div>
 
-            <div>
-              <label>motivo reporte</label>
+            <div className="ol">
+              <label>Motivo del reporte</label>
               <input
-                placeholder="motivo reporte"
+                placeholder="Motivo del reporte:"
                 value={motivo_reporte}
                 onChange={(e) => set_motivo_reporte(e.target.value)}
               ></input>
             </div>
 
-            <div>
-              <label>recomendacion</label>
+            <div className="ol">
+              <label>Recomendacion: </label>
               <input
-                placeholder="recomendacion"
+                placeholder="Recomendacion para indicador"
                 value={recomendacion}
                 onChange={(e) => set_recomendacion(e.target.value)}
               ></input>
             </div>
 
-          </Modal.Body>
-          <Modal.Footer>
-            <div className="text-center ">
-              Designed by: Zachlesk
-              <a href="https://github.com/Zachlesk y yohan" className="text-white me-2 custom-icon" target="_blank" rel="noopener noreferrer">
-                <i className="fa fa-github fa-2x"></i>
-              </a>
-            </div>
-            <Button type="submit" onClick={postData}>
+            <Button type="submit" onClick={handleClick}>
               Agrega
             </Button>
-            <Button type="submit" variant="secondary" onClick={handleClosePost}>
-              Cerrar
-            </Button>
-          </Modal.Footer>
+
+          </Modal.Body>
         </Modal>
       </div>
     </>
