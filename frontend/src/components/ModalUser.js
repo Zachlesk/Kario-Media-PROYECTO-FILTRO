@@ -5,6 +5,7 @@ import { Button } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 import logo from "../assets/logo.png";
 import "./styles/ModalUser.css";
+import CreateUser from "./CreateUser";
 
 const token = localStorage.getItem("token");
 const config = {
@@ -12,6 +13,8 @@ const config = {
     token: token,
   },
 };
+
+
 
 const ModalUser = ({ handleClose, show }) => {
   const [userInfo, setUserInfo] = useState([]);
@@ -48,36 +51,46 @@ const ModalUser = ({ handleClose, show }) => {
     }
   }, [show]);
 
+  const [showModalPost, setShowModalPost] = useState(false);
+   const handleShowPost = () => setShowModalPost(true);
+   const handleClosePost = () => setShowModalPost(false);
+
   return (
     <Modal show={show} onHide={handleClose} dialogClassName={`right-corner-modal ${show ? '' : 'slide-out-right'}`}>
 
       <Modal.Body>
-      <img src={logo} alt="Mariposa" className="logo" width="40" />
-        <br/> <h3 className="perfildeusuario"> Perfil de usuario </h3>
+        
+        <img src={logo} alt="Mariposa" className="logo" width="40" />
+        <br /> <h3 className="perfildeusuario"> Perfil de usuario </h3>
 
-        {console.log(userInfo)}
 
-        <img src={userInfo.imagen} className="imagen" alt="imagen" width={140} style={{borderRadius: 500}} />
+        <img src={userInfo.imagen} className="imagen" alt="imagen" width={140} style={{ borderRadius: 500 }} />
         <h2>{userInfo.nombre}</h2>
         <h4>{userInfo.cargo}</h4>
 
         <br />
 
         <p> <b> Contacto: </b></p>
-        <h3> {userInfo.email} </h3> 
-        <h3> {userInfo.telefono} </h3> 
+        <h3> {userInfo.email} </h3>
+        <h3> {userInfo.telefono} </h3>
 
         <br />
 
-       <h3> <b> Fecha de Registro: </b> {userInfo.fecha_registro} </h3>  
+        <h3> <b> Fecha de Registro: </b> {userInfo.fecha_registro} </h3>
 
-       <Link to="/">
-       <i class="fa fa-sign-out" aria-hidden="true"></i>  
-      </Link>
-       
+        <Link to="/" onClick={() => localStorage.removeItem("token")}>
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+        </Link>
 
+        {userInfo.rol == "ADMIN" ? (
+          <Button onClick={handleShowPost}>
+            <p> <i class="fa fa-plus" aria-hidden="true"></i> AÑADIR USUARIO</p>
+            {showModalPost && <CreateUser show={showModalPost} handleClosePost={handleClosePost} />}
+          </Button>
+          
+        ) : null
+        }
       </Modal.Body>
-
     </Modal>
   );
 };

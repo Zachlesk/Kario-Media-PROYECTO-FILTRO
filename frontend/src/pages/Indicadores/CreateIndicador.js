@@ -108,8 +108,7 @@ const CreateIndicador = ({ show, handleClosePost }) => {
                       key={i}
                       value={data._id}
                     >
-                      {" "}
-                      {data.nombre}{" "}
+                      {data.nombre}
                     </option>
                   );
                 })}

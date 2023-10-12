@@ -8,9 +8,7 @@ import { Table, Button } from "semantic-ui-react";
 import Navbar from "../../components/NavBar/Navbar";
 import ModalUser from "../../components/ModalUser";
 import './Reportes.css'
-
 import CreateReportes from "./CreateReportes";
-import { Link, useNavigate } from "react-router-dom";
 
 
 const token = localStorage.getItem("token")
@@ -24,12 +22,10 @@ const config = {
 
 export default function ReadReportes() {
 
+  //modalPost
   const [showModalPost, setShowModal] = useState(false);
   const handleClosePost = () => setShowModal(false);
   const handleShowPost = () => setShowModal(true);
-
-=======
-const history = useNavigate()
 
   //estilo rueda
   const [isChecked, setIsChecked] = useState(false);
@@ -55,24 +51,10 @@ const history = useNavigate()
   const [APIData, setAPIData] = useState([]);
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
-    const config = {
-      headers: {
-        token: token
-      },
-    }
-
-    //si no hay token
-    if (!token) {
-      history("/");
-    }
-
     axios.get("http://localhost:8020/reportes/all", config)
       .then((response) => {
         console.log(response.data);
         setAPIData(response.data);
-      }).catch(()=>{
-        history("/");
       });
   }, []);
 
@@ -114,7 +96,7 @@ const history = useNavigate()
   };
   return (
     <div>
-      <Navbar handleShow={handleShow} botonDelete={botonDelete} setBotonDelete={setBotonDelete} />
+      <Navbar handleShow={handleShow} botonDelete={botonDelete} setBotonDelete={setBotonDelete} handleShowPost={handleShowPost} />
 
 
       <div className='container-main'>
@@ -156,15 +138,13 @@ const history = useNavigate()
                             {element.resultado_indicador}
                           </h6>
                         </h6>
-                        {/* <label style={{ display: 'flex', alignItems: 'center' }}>
-        <input
-          type="checkbox"
-          checked={isChecked}
-          onChange={handleCheckboxChange}
-          style={checkboxStyles}
-        />
-        La casilla de verificación está {isChecked ? 'marcada' : 'desmarcada'}.
-      </label> */}
+
+                        {botonDelete ? (
+                           <div onClick={() => onDelete(element._id)}>
+                           <i class="fa fa-lg fa-times-circle" aria-hidden="true" style={{color: 'red'}}></i>
+                           </div>
+                        ): null}
+
                       </Card.Text>
                       <div className="row">
                       </div>
@@ -180,50 +160,6 @@ const history = useNavigate()
         </div>
       </div>
 
-
-
-
-
-
-      {/* <Table singleLine>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Usuario</Table.HeaderCell>
-            <Table.HeaderCell>Indicador Reportado </Table.HeaderCell>
-            <Table.HeaderCell>Titulo reporte</Table.HeaderCell>
-            <Table.HeaderCell>Fecha reporte</Table.HeaderCell>
-            <Table.HeaderCell>Resultado Indicador</Table.HeaderCell>
-            <Table.HeaderCell>Motivo Reporte</Table.HeaderCell>
-            <Table.HeaderCell>Recomendacion</Table.HeaderCell>
-
-            <Table.HeaderCell>Actualizar</Table.HeaderCell>
-            <Table.HeaderCell>Eliminar</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {APIData.map((data) => {
-            return (
-              <Table.Row>
-                <Table.Cell>{data.detallesUsuario[0].nombre}</Table.Cell>
-                <Table.Cell>{data.detallesIndicador[0].indicador}</Table.Cell>
-                <Table.Cell>{data.titulo_reporte}</Table.Cell>
-                <Table.Cell>{data.fecha_reporte}</Table.Cell>
-                <Table.Cell>{data.resultado_indicador}</Table.Cell>
-                <Table.Cell>{data.motivo_reporte}</Table.Cell>
-                <Table.Cell>{data.recomendacion}</Table.Cell>
-                <Link to="/updateReporte">
-                  <Table.Cell>
-                    <Button onClick={() => setData(data)}>Actualizar</Button>
-                  </Table.Cell>
-                </Link>
-                <Table.Cell>
-                  <Button onClick={() => onDelete(data._id)}>Eliminar</Button>
-                </Table.Cell>
-              </Table.Row>
-            );
-          })}
-        </Table.Body>
-      </Table> */}
 
       {/* modal de usuario */}
       <ModalUser handleClose={handleClose} show={show} />

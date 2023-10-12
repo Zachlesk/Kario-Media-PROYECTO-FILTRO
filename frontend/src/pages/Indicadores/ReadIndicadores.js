@@ -6,6 +6,8 @@ import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import logo from "../../assets/logo.png";
 import green from "../../assets/Circled Notch-Green.png";
 
+import 'font-awesome/css/font-awesome.min.css'
+
 //componentes
 import Navbar from "../../components/NavBar/Navbar";
 import ModalUser from "../../components/ModalUser";
@@ -15,6 +17,7 @@ import "./Indicadores.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Table } from "react-bootstrap";
 import { useNavigate } from "react-router";
+import CreateIndicador from "./CreateIndicador";
 
 //rutas (deprecated jijiji)
 //import UpdateIndicador from "./UpdateIndicador";
@@ -33,7 +36,6 @@ export default function ReadIndicadores() {
 
   //MODALPOST
   const [showModalPost, setShowModalPost] = useState(false);
-
   const handleShowPost = () => setShowModalPost(true);
   const handleClosePost = () => setShowModalPost(false);
 
@@ -125,21 +127,16 @@ export default function ReadIndicadores() {
   };
   return (
     <div>
-      {/* <Navbar
-        handleShow={handleShow}
-        botonDelete={botonDelete}
-        setBotonDelete={setBotonDelete}
-      /> */}
 
-     <div className="container-main">
-        <img src={logo} alt="logo" width={30} style={{ marginTop: 30 }}></img>
+      <div className="container-main">
 
         <Navbar handleShow={handleShow}
+
           botonDelete={botonDelete}
           setBotonDelete={setBotonDelete}
+
           handleShowPost={handleShowPost}
-          show={showModalPost}
-          handleClosePost={handleClosePost}
+          //handleClosePost={handleClosePost}
         />
 
         <div className='container-main'>
@@ -212,24 +209,6 @@ export default function ReadIndicadores() {
                       <div className="text">
                         <b>
 
-      <Navbar handleShow={handleShow} 
-              botonDelete={botonDelete} 
-              setBotonDelete={setBotonDelete} 
-              handleShowPost={handleShowPost}
-              show={showModalPost}
-              handleClosePost={handleClosePost}
-
-      <div className='container-main'>
-        <img src={logo} alt='logo' width={30} style={{ marginTop: 30 }}></img>
-        <h3> Panel de indicadores </h3>
-        <h5>
-          Aqui puedes visualizar los indicadores propuestos y añadidos por tu
-          equipo de trabajo, Si quieres ver más detalles, dale click a uno de
-          ellos para más información.
-        </h5>
-      </div>
-
-
                           <CircularProgress
                             value={data.cumplimiento}
                             color={
@@ -262,10 +241,8 @@ export default function ReadIndicadores() {
                     <td>
                       {botonDelete ? (
                         <td>
-                          <div>
-                            <Button type="submit" onClick={() => onDelete(data._id)}>
-                              delete
-                            </Button>
+                          <div onClick={() => onDelete(data._id)}>
+                          <i class="fa fa-lg fa-times-circle" aria-hidden="true" style={{color: 'red'}}></i>
                           </div>
                         </td>
                       ) : null}
@@ -280,10 +257,12 @@ export default function ReadIndicadores() {
 
         {/* modal de usuario */}
         <ModalUser handleClose={handleClose} show={show} />
-      </div>
 
-      {/* modal de usuario */}
-      <ModalUser handleClose={handleClose} show={show} />
+
+        {/**create indicador */}
+        <CreateIndicador show={showModalPost} handleClosePost={handleClosePost} />
+
+      </div>
 
     </div>
   );

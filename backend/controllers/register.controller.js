@@ -15,7 +15,7 @@ export const Register = async (req, res)=> {
             rol,
             fecha_registro,
             activo } = req.body;
-
+            console.log(req.body);
             const usuarioCreate = {
                 nombre,
                 email,
