@@ -11,15 +11,53 @@ import 'font-awesome/css/font-awesome.min.css'
 import './Navbar.css'
 
 import { Link } from 'react-router-dom';
-import CreateIndicador from '../../pages/Indicadores/CreateIndicador';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-export default function Navbar({handleShow,botonDelete,setBotonDelete, handleShowPost, show, handleClosePost}) {
+export default function Navbar({handleShow,botonDelete,setBotonDelete, handleShowPost}) {
+
+
+  const [userInfo, setUserInfo] = useState(profile)
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+
+        const token = localStorage.getItem("token");
+        const config = {
+          headers: {
+            token: token,
+          },
+        };
+
+        const base64Url = token.split(".")[1];
+        const base64 = base64Url.replace("-", "+").replace("_", "/");
+        const userData = JSON.parse(window.atob(base64));
+
+        const response = await axios.get(
+          `http://localhost:8020/usuarios/one/${userData.uid}`,
+          config
+        );
+
+        console.log(response.data);
+        setUserInfo(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+      fetchUserData();
+    
+  }, []);
+
+
+
     return(
       <div> 
       <nav className="navbar navbar-expand-lg">
       <div className='info'>
 
-      <h5 className="mr-auto" onClick={handleShowPost}>
+      <h5 className="mr-auto" onClick={() => handleShowPost()}>
       <Link to="">
       <img src={add} width={30} alt='Imagen de add'/> Añadir
       </Link>
@@ -31,13 +69,7 @@ export default function Navbar({handleShow,botonDelete,setBotonDelete, handleSho
       </Link>
       </h5>
 
-      <h5 className="mr-auto" onClick={() => {
-              if (botonDelete) {
-                setBotonDelete(false);
-              }else{
-                setBotonDelete(true)
-              }
-            }}>
+      <h5 className="mr-auto" onClick={() => setBotonDelete(!botonDelete)}>
       <Link to=''>
       <img src={deletet} width={18} alt='Imagen de add'/> Eliminar
       </Link>
@@ -67,13 +99,14 @@ export default function Navbar({handleShow,botonDelete,setBotonDelete, handleSho
       <Link to=''>
       <i className="fa fa-bell" aria-hidden="true" style={{marginLeft: 20}}></i> </Link>
       <Link to=''>
-      <img onClick={()=> handleShow()} src={profile} style={{marginLeft: 20}} width={50} alt='ACÁ VA LA IMAGEN DEL SESION DE USUARIO '/> 
+      <img onClick={()=> handleShow()} src={userInfo.imagen} style={{marginLeft: 20, borderRadius: 30}} width={50} alt='ACÁ VA LA IMAGEN DEL SESION DE USUARIO '/> 
       </Link>
       </h5>
 
       </div>
     </nav>
-    <CreateIndicador show={show} handleClosePost={handleClosePost} />
+
+    
     </div>
     )
 }

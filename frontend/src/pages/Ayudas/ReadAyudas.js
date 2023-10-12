@@ -23,8 +23,11 @@ const config = {
 export default function ReadAyudas() {
   const [APIData, setAPIData] = useState([]);
 
-  const [showModal, setShowModal] = useState(false);
-  const [showModalPost, setShowModalPost] = useState(false);
+   //MODALPOST
+   const [showModalPost, setShowModalPost] = useState(false);
+   const handleShowPost = () => setShowModalPost(true);
+   const handleClosePost = () => setShowModalPost(false);
+
   const [botonDelete, setBotonDelete] = useState(false);
 
   //bootstrap para perfil
@@ -32,8 +35,6 @@ export default function ReadAyudas() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleClosePost = () => setShowModalPost(false);
-  const handleShowPost = () => setShowModalPost(true);
 
   const history = useNavigate()
 
@@ -105,6 +106,8 @@ export default function ReadAyudas() {
         handleShow={handleShow}
         botonDelete={botonDelete}
         setBotonDelete={setBotonDelete}
+
+        handleShowPost={handleShowPost}
       />
 
 
@@ -129,7 +132,8 @@ export default function ReadAyudas() {
       })}
 
       {/* modal create */}
-      {showModalPost && <CreateAyudas show={showModalPost} handleClosePost={handleClosePost} />}
+     <CreateAyudas show={showModalPost} handleClosePost={handleClosePost} />
+
 
       {/* modal de usuario */}
       <ModalUser handleClose={handleClose} show={show} />

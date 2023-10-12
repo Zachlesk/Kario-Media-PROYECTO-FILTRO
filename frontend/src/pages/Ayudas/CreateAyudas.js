@@ -28,21 +28,6 @@ const CreateAyudas = ({ show, handleClosePost }) => {
     const [allUsuarios, setAllUsuarios] = useState([]);
     const [allIndicadores, setAllIndicadores] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const allUsers = await axios.get("http://localhost:8020/usuarios/all", config);
-                const allIndicadores = await axios.get("http://localhost:8020/indicadores/all", config);
-                setAllIndicadores(allIndicadores.data);
-                setAllUsuarios(allUsers.data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchData();
-    }, [])
-
     const postData = () => {
         axios
             .post(`http://localhost:8020/ayudas/post`, {
@@ -69,7 +54,7 @@ const CreateAyudas = ({ show, handleClosePost }) => {
                 <Modal show={show} onHide={handleClosePost} className="custom-modal">
 
                     <Modal.Header className='b'>
-                        <Modal.Title> ¡Agrega una nuevo alimento! 🌸 </Modal.Title>
+                        <Modal.Title> ¡Agrega alimento </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className='a'>
                         <label> seleccione usuario </label>

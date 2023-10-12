@@ -167,7 +167,7 @@ const CreateReportes = ({ show, handleClosePost }) => {
           <Modal.Footer>
             <div className="text-center ">
               Designed by: Zachlesk
-              <a href="https://github.com/Zachlesk" className="text-white me-2 custom-icon" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/Zachlesk y yohan" className="text-white me-2 custom-icon" target="_blank" rel="noopener noreferrer">
                 <i className="fa fa-github fa-2x"></i>
               </a>
             </div>
