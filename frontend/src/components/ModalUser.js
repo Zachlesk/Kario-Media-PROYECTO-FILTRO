@@ -2,6 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button } from "semantic-ui-react";
+import { Link } from 'react-router-dom';
+import logo from "../assets/logo.png";
+import "./styles/ModalUser.css";
 
 const token = localStorage.getItem("token");
 const config = {
@@ -38,36 +41,35 @@ const ModalUser = ({ handleClose, show }) => {
   }, [show]);
 
   return (
-    <Modal show={show} onHide={handleClose} className="right-corner-modal">
-      <Modal.Header closeButton>
-        <Modal.Title>Perfil de Usuario</Modal.Title>
-      </Modal.Header>
+    <Modal show={show} onHide={handleClose} dialogClassName={`right-corner-modal ${show ? '' : 'slide-out-right'}`}>
 
       <Modal.Body>
+      <img src={logo} alt="Mariposa" className="logo" width="40" />
+        <br/> <h3 className="perfildeusuario"> Perfil de usuario </h3>
+
         {console.log(userInfo)}
 
-        <img src={userInfo.imagen} alt="imagen" />
+        <img src={userInfo.imagen} className="imagen" alt="imagen" width={140} style={{borderRadius: 500}} />
         <h2>{userInfo.nombre}</h2>
-        <h6>{userInfo.cargo}</h6>
+        <h4>{userInfo.cargo}</h4>
 
         <br />
 
-        <p>Contacto</p>
-        <p> {userInfo.email} </p>
-        <p> {userInfo.telefono} </p>
+        <p> <b> Contacto: </b></p>
+        <h3> {userInfo.email} </h3> 
+        <h3> {userInfo.telefono} </h3> 
 
         <br />
 
-        <p>Fecha de Registro: {userInfo.fecha_registro} </p>
+       <h3> <b> Fecha de Registro: </b> {userInfo.fecha_registro} </h3>  
+
+       <Link to="/">
+       <i class="fa fa-sign-out" aria-hidden="true"></i>  
+      </Link>
+       
 
       </Modal.Body>
 
-
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
-      </Modal.Footer>
     </Modal>
   );
 };
