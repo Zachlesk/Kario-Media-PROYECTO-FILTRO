@@ -26,7 +26,6 @@ const Login = () => {
     const validarLogin = () => {
       setUserClickedLogin(true);
       setIsLoading(true);
-
         try {
             axios.post("http://localhost:8020/login/validate", {
                 email, password

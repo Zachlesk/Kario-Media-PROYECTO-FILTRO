@@ -52,19 +52,21 @@ export default function ReadIndicadores() {
   const history = useNavigate();
 
   useEffect(() => {
+
     //token
     const token = localStorage.getItem("token");
-
-    //si no hay token
-    if (!token) {
-      history("/login");
-    }
 
     const config = {
       headers: {
         token: token,
       },
     };
+
+    //si no hay token
+    if (!token) {
+      history("/");
+    }
+
 
     axios
       .get("http://localhost:8020/indicadores/all", config)
@@ -73,7 +75,7 @@ export default function ReadIndicadores() {
         setAPIData(response.data);
       })
       .catch((err) => {
-        history("/login");
+        history("/")
       });
   }, []);
 
@@ -129,8 +131,9 @@ export default function ReadIndicadores() {
         setBotonDelete={setBotonDelete}
       /> */}
 
-      <div className="container-main">
+     <div className="container-main">
         <img src={logo} alt="logo" width={30} style={{ marginTop: 30 }}></img>
+
         <Navbar handleShow={handleShow}
           botonDelete={botonDelete}
           setBotonDelete={setBotonDelete}
@@ -209,6 +212,24 @@ export default function ReadIndicadores() {
                       <div className="text">
                         <b>
 
+      <Navbar handleShow={handleShow} 
+              botonDelete={botonDelete} 
+              setBotonDelete={setBotonDelete} 
+              handleShowPost={handleShowPost}
+              show={showModalPost}
+              handleClosePost={handleClosePost}
+
+      <div className='container-main'>
+        <img src={logo} alt='logo' width={30} style={{ marginTop: 30 }}></img>
+        <h3> Panel de indicadores </h3>
+        <h5>
+          Aqui puedes visualizar los indicadores propuestos y añadidos por tu
+          equipo de trabajo, Si quieres ver más detalles, dale click a uno de
+          ellos para más información.
+        </h5>
+      </div>
+
+
                           <CircularProgress
                             value={data.cumplimiento}
                             color={
@@ -260,6 +281,10 @@ export default function ReadIndicadores() {
         {/* modal de usuario */}
         <ModalUser handleClose={handleClose} show={show} />
       </div>
+
+      {/* modal de usuario */}
+      <ModalUser handleClose={handleClose} show={show} />
+
     </div>
   );
 }

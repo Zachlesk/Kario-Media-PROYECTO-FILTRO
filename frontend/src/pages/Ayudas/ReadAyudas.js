@@ -3,7 +3,15 @@ import React, { useEffect, useState } from "react";
 import { Table, Button } from "semantic-ui-react";
 import UpdateAyudas from "./UpdateAyudas";
 import CreateAyudas from "./CreateAyudas.js";
+
+import help from "../../assets/Help.png"
+import profile from '../../assets/Female Profile.png'
+import Navbar from "../../components/NavBar/Navbar";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Ayudas.css'
+import ModalUser from "../../components/ModalUser";
+import { useNavigate } from "react-router";
 
 const token = localStorage.getItem("token")
 const config = {
@@ -17,18 +25,37 @@ export default function ReadAyudas() {
 
   const [showModal, setShowModal] = useState(false);
   const [showModalPost, setShowModalPost] = useState(false);
+  const [botonDelete, setBotonDelete] = useState(false);
 
-  const handleClose = () => setShowModal(false);
-  const handleShow = () => setShowModal(true);
+  //bootstrap para perfil
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleClosePost = () => setShowModalPost(false);
   const handleShowPost = () => setShowModalPost(true);
 
+  const history = useNavigate()
+
   useEffect(() => {
+    const token = localStorage.getItem("token")
+    const config = {
+      headers: {
+        token: token
+      },
+    }
+
+    //si no hay token
+    if (!token) {
+      history("/");
+    }
+
     axios.get("http://localhost:8020/ayudas/all", config)
       .then((response) => {
         console.log(response.data);
         setAPIData(response.data);
+      }).catch(()=>{
+        history("/");
       });
   }, []);
 
@@ -73,56 +100,39 @@ export default function ReadAyudas() {
 
   return (
     <div>
-      <Button className="btn btn-warning btn-round add" onClick={handleShowPost}>
-        Crear
-      </Button>
+
+      <Navbar
+        handleShow={handleShow}
+        botonDelete={botonDelete}
+        setBotonDelete={setBotonDelete}
+      />
+
+
+      <div className="information">
+        <h1> Ayudas del sistema </h1>
+        <img src={help} width={40} alt='Imagen de ayuda' />
+        <h4> Módulo para inquietudes, dudas, solicitudes y ayudantías para los indicadores o sobre el sistema.  </h4>
+        <p> <button className='botonsano'> Añadir ayuda </button></p>
+      </div>
+
+
+
+      {APIData.map((data) => {
+        return (
+          <div className="large-container">
+            <img src={data.detalleUsuario[0].imagen || profile} width={60} height={40} alt='ACÁ VA LA IMAGEN DEL SESION DE USUARIO ' />
+            <p>  {data.detalleUsuario[0].nombre}  </p>
+            <p> <b> {data.titulo_ayuda} </b>  </p>
+            <p> <button className='botonsano'> Detalles </button></p>
+          </div>
+        )
+      })}
+
+      {/* modal create */}
       {showModalPost && <CreateAyudas show={showModalPost} handleClosePost={handleClosePost} />}
-      <Table singleLine>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Usuario</Table.HeaderCell>
-            <Table.HeaderCell>Indicador Ayuda</Table.HeaderCell>
-            <Table.HeaderCell>Titulo ayuda</Table.HeaderCell>
-            <Table.HeaderCell>Fecha ayuda</Table.HeaderCell>
-            <Table.HeaderCell>Area asignada</Table.HeaderCell>
-            <Table.HeaderCell>Prioridad</Table.HeaderCell>
-            <Table.HeaderCell>Motivo ayuda</Table.HeaderCell>
-            <Table.HeaderCell>Estado</Table.HeaderCell>
 
-            <Table.HeaderCell>Actualizar</Table.HeaderCell>
-            <Table.HeaderCell>Eliminar</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {APIData.map((data) => {
-            return (
-              <Table.Row>
-                <Table.Cell>{data.detalleUsuario[0].nombre}</Table.Cell>
-                <Table.Cell>{data.detallesIndicadores[0].indicador}</Table.Cell>
-                <Table.Cell>{data.titulo_ayuda}</Table.Cell>
-                <Table.Cell>{data.fecha_ayuda}</Table.Cell>
-                <Table.Cell>{data.area_asignada}</Table.Cell>
-                <Table.Cell>{data.prioridad}</Table.Cell>
-                <Table.Cell>{data.motivo_ayuda}</Table.Cell>
-                <Table.Cell>{data.estado}</Table.Cell>
-                  <Table.Cell>
-                    <Button
-                      className="btn btn-warning"
-                      onClick={() => { handleShow(); setData(data); }}
-                    >
-                      Editar
-                    </Button>
-                    {showModal && <UpdateAyudas show={showModal} handleClose={handleClose} />}
-                  </Table.Cell>
-
-                  <Table.Cell>
-                    <Button onClick={() => onDelete(data._id)}>Eliminar</Button>
-                  </Table.Cell>
-              </Table.Row>
-            );
-          })}
-        </Table.Body>
-      </Table>
+      {/* modal de usuario */}
+      <ModalUser handleClose={handleClose} show={show} />
     </div>
   );
 }
